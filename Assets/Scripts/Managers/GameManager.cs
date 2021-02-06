@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
         _gameState = GameState.MainMenu;
         _spawnManager = new SpawnManager();
 
+        startGame();
+
     }
 
 
@@ -30,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     public void startGame()
     {
-
+        
     }
 
 

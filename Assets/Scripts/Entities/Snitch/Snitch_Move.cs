@@ -48,7 +48,7 @@ public class Snitch_Move : MonoBehaviour
     //when the snitch is about to leave the bounds, send it towards the center
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Leaving Boundaries");
+
 
         //vector which points towards origin
         Vector3 dirTowardsOrigin = new Vector3(0, 0, 0) - transform.position;
@@ -68,10 +68,13 @@ public class Snitch_Move : MonoBehaviour
     private void Redirect(Vector3 newDir)
     {
 
-        if(DEBUG_SNITCH)
+        if (DEBUG_SNITCH)
+        {
             Debug.DrawRay(transform.position, newDir);
+        }
 
-        Debug.Log("Redirect new Vector: " + newDir);
+
+
         _rb.AddForce(newDir * speed, ForceMode.Force);
 
         //transform.Translate(newDir*speed*Time.deltaTime);

@@ -16,6 +16,11 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private int numSlytherinToSpawn;
 
+    public void Start()
+    {
+        spawnTeam(numGryffinToSpawn, true);
+    }
+
     public void spawnTeam(int numToSpawn, bool isGryffindor)
     {
         GameObject newPlayer = null;
@@ -32,13 +37,12 @@ public class SpawnManager : MonoBehaviour
         for (int i = 0; i < numToSpawn; i++)
         {
             
-           GameObject newObj = Instantiate<GameObject>(newPlayer, new Vector3(spawnTrans.position.x,
-               spawnTrans.position.y + i, 0), Quaternion.identity);
+           GameObject newObj = Instantiate<GameObject>(newPlayer, new Vector3(spawnTrans.position.x + i,
+               0, spawnTrans.position.z), Quaternion.identity);
 
             Player_Base newBase = null;
             newObj.TryGetComponent<Player_Base>(out newBase);
-            
-        
+
         }
 
     }
