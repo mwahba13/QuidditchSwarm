@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using ScriptableObjs;
 
 [RequireComponent( typeof(Rigidbody))]
 [RequireComponent(typeof(Collider))]
@@ -17,14 +18,14 @@ public abstract class Player_Base : MonoBehaviour
 
     public bool DEBUG = true;
 
-    //how often the player's exhaustion increment
-    public float exhaustTickFreq;
 
     //Player traits, all between 0.0 and 1.0
     [SerializeField]
     protected float _aggro;
+    [SerializeField]
     protected float _maxExhaust;
-    protected float _currentExhaust;
+    [SerializeField]
+    protected float _currentExhaust = 0;
     [SerializeField]
     protected float _maxVelocity;
     [SerializeField]
@@ -39,28 +40,42 @@ public abstract class Player_Base : MonoBehaviour
     protected Rigidbody _rb;
     protected GameObject _snitchObj;
 
+    
+
+    public PlayerConstants playerConstants;
+
     private float _currentSpeed;
-
-
-    private Player_SpeedReg _speedReg;
-
-
+    private float _exhaustTimer;
+    
     public void Start()
     {
-
-        _snitchObj = GameObject.FindGameObjectWithTag("Snitch");
         TryGetComponent<Rigidbody>(out _rb);
         generateTraitValues();
         setState(PlayerState.Conscious);
 
-        _speedReg = gameObject.AddComponent<Player_SpeedReg>() as Player_SpeedReg;
-        _speedReg.setSpeedExhaustValues(exhaustTickFreq, _maxExhaust, _maxVelocity);
-         
+        _exhaustTimer = playerConstants.exhastionTickFreq;
     }
 
 
     public void FixedUpdate()
     {
+        
+        //tick exhaustion if timer has elapsed
+        _exhaustTimer += Time.deltaTime;
+        if (_exhaustTimer > playerConstants.exhastionTickFreq)
+        {
+            //calculate new exhaust
+            _currentExhaust = SpeedExhaustReg.tickExhaust(_currentExhaust, _currentSpeed,
+                _maxVelocity,playerConstants.maxExhaustionDepletion,playerConstants.exhaustThreshold);
+            
+            if(_currentExhaust <= 0)
+                setState(PlayerState.Unconscious);
+
+            _exhaustTimer = 0;
+        }
+        
+        
+        
 
             switch (getState())
             {
@@ -96,11 +111,12 @@ public abstract class Player_Base : MonoBehaviour
             //generate avg vector of neighbours
             foreach (Collider col in hitColliders)
             {
+                
                 if (col.gameObject.GetComponent<Player_Base>())
                     avgNeighbourVector += col.gameObject.transform.position.normalized;
 
                 if (DEBUG)
-                    Debug.DrawLine(transform.position, col.transform.position);
+                    Debug.DrawLine(transform.position, col.transform.position,Color.red);
             }
 
             avgNeighbourVector /= hitColliders.Length;
@@ -117,17 +133,11 @@ public abstract class Player_Base : MonoBehaviour
 
 
     //SPEED REGULATION//
-
-    public void setState(PlayerState newState) { _state = newState; }
-    public PlayerState getState() { return _state; }
-
-    
-
     public void consciousState() 
     {
         float distToSnitch = (_snitchObj.transform.position - transform.position).magnitude;
-
-        _currentSpeed = _speedReg.regulateSpeed(_currentSpeed,distToSnitch,_aggro);
+        _currentSpeed = 5.0f;
+        _currentSpeed = SpeedExhaustReg.regulateSpeed(_currentSpeed,_maxVelocity,distToSnitch,_aggro,_currentExhaust);
         _generalBoidBehavior();
         teamSpecificBehavior();
         
@@ -138,6 +148,16 @@ public abstract class Player_Base : MonoBehaviour
     {
 
     }
+    
+    
+    //GET/SET///
+    public void setSnitchObj(GameObject newSnitch)
+    {
+        _snitchObj = newSnitch;
+        
+    }
+    public void setState(PlayerState newState) { _state = newState; }
+    public PlayerState getState() { return _state; }
 
     //ABSTRACT METHODS//
     public abstract void generateTraitValues();

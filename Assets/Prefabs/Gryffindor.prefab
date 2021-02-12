@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7373489663972688596}
   - component: {fileID: 7373489663972688597}
   - component: {fileID: 7373489663972688593}
-  - component: {fileID: 1195403889}
+  - component: {fileID: 3424568403427619156}
   m_Layer: 0
   m_Name: Gryffindor
   m_TagString: Untagged
@@ -111,7 +111,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1195403889
+--- !u!114 &3424568403427619156
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,10 +124,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG: 1
-  exhaustTickFreq: 1
   _aggro: 0
   _maxExhaust: 0
   _currentExhaust: 0
   _maxVelocity: 0
   _weight: 0
-  _neighbourAvoidanceRadius: 5
+  _neighbourAvoidanceRadius: 0
+  playerConstants: {fileID: 11400000, guid: bc28a1c9b767b0a408600a1eaef7b534, type: 2}

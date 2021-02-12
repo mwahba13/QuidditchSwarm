@@ -3,9 +3,7 @@ using System.Collections;
 
 public class Gryffindor : Player_Base
 {
-
     
-
     //INIT//
     public override void generateTraitValues()
     {
