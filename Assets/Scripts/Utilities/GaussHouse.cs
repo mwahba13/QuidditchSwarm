@@ -9,7 +9,7 @@ public class GaussHouse : MonoBehaviour
     private static System.Random _rand = new System.Random();
 
     //Uses Box-Muller Transform-https://stackoverflow.com/questions/218060/random-gaussian-variables
-    public static float generateGaussianFloat (float x,float std)
+    public static float GenerateGaussianFloat (float x,float std)
     {
 
 
@@ -20,5 +20,9 @@ public class GaussHouse : MonoBehaviour
 
         return (float)(x + std * randStdNormal);
     }
+
+
+    
+    
     
 }

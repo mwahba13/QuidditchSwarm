@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
         _gameState = GameState.MainMenu;
         _spawnManager = new SpawnManager();
 
-        startGame();
+        StartGame();
 
     }
 
@@ -25,12 +25,12 @@ public class GameManager : MonoBehaviour
 
 
 
-    public void setupGame()
+    public void SetupGame()
     {
 
     }
 
-    public void startGame()
+    public void StartGame()
     {
         
     }

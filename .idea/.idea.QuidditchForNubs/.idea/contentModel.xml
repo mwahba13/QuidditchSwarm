@@ -12,8 +12,7 @@
             <e p="Player_Base.cs" t="Include" />
             <e p="Slytherin.cs" t="Include" />
             <e p="Snitch" t="Include">
-              <e p="Snitch_AI.cs" t="Include" />
-              <e p="Snitch_Move.cs" t="Include" />
+              <e p="Snitch.cs" t="Include" />
             </e>
           </e>
           <e p="Managers" t="Include">
@@ -21,9 +20,13 @@
             <e p="SpawnManager.cs" t="Include" />
           </e>
           <e p="ScriptableObjs" t="Include">
+            <e p="GryffindorTraitsScriptable.cs" t="Include" />
             <e p="PlayerConstants.cs" t="Include" />
+            <e p="SlytherinTraitsScriptable.cs" t="Include" />
+            <e p="SnitchScriptable.cs" t="Include" />
           </e>
           <e p="Utilities" t="Include">
+            <e p="CollisionHandler.cs" t="Include" />
             <e p="GaussHouse.cs" t="Include" />
             <e p="SpeedExhaustReg.cs" t="Include" />
           </e>

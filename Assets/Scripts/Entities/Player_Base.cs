@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using ScriptableObjs;
+using UnityEngine.Serialization;
 
 [RequireComponent( typeof(Rigidbody))]
 [RequireComponent(typeof(Collider))]
-public abstract class Player_Base : MonoBehaviour
+public abstract class PlayerBase : MonoBehaviour
 {
 
     //This class handles behaviours common across players on both teams (i.e. movement etc.)
@@ -16,28 +17,24 @@ public abstract class Player_Base : MonoBehaviour
 
     }
 
-    public bool DEBUG = true;
-
-
     //Player traits, all between 0.0 and 1.0
-    [SerializeField]
-    protected float _aggro;
-    [SerializeField]
-    protected float _maxExhaust;
-    [SerializeField]
-    protected float _currentExhaust = 0;
-    [SerializeField]
-    protected float _maxVelocity;
-    [SerializeField]
-    protected float _weight;
+    [FormerlySerializedAs("_aggro")] [SerializeField]
+    protected float aggro;
+    [FormerlySerializedAs("_maxExhaust")] [SerializeField]
+    protected float maxExhaust;
+    [FormerlySerializedAs("_currentExhaust")] [SerializeField]
+    protected float currentExhaust = 0;
+    [FormerlySerializedAs("_maxVelocity")] [SerializeField]
+    protected float maxVelocity;
+    [FormerlySerializedAs("_weight")] [SerializeField]
+    protected float weight;
 
-    // radius where agent checks for neighbours
-    [SerializeField]
-    protected float _neighbourAvoidanceRadius;
+
     
-
-    protected PlayerState _state;
+    [FormerlySerializedAs("_state")] [SerializeField]
+    protected PlayerState state;
     protected Rigidbody _rb;
+    [SerializeField]
     protected GameObject _snitchObj;
 
     
@@ -50,41 +47,26 @@ public abstract class Player_Base : MonoBehaviour
     public void Start()
     {
         TryGetComponent<Rigidbody>(out _rb);
-        generateTraitValues();
-        setState(PlayerState.Conscious);
+        
+        GenerateTraitValues();
+        SetState(PlayerState.Conscious);
 
         _exhaustTimer = playerConstants.exhastionTickFreq;
+        _rb.mass = weight;
     }
 
 
     public void FixedUpdate()
     {
-        
-        //tick exhaustion if timer has elapsed
-        _exhaustTimer += Time.deltaTime;
-        if (_exhaustTimer > playerConstants.exhastionTickFreq)
-        {
-            //calculate new exhaust
-            _currentExhaust = SpeedExhaustReg.tickExhaust(_currentExhaust, _currentSpeed,
-                _maxVelocity,playerConstants.maxExhaustionDepletion,playerConstants.exhaustThreshold);
-            
-            if(_currentExhaust <= 0)
-                setState(PlayerState.Unconscious);
-
-            _exhaustTimer = 0;
-        }
-        
-        
-        
-
-            switch (getState())
+ 
+            switch (GETState())
             {
                 case PlayerState.Conscious:
-                    consciousState();
+                    ConsciousState();
                     break;
 
                 case PlayerState.Unconscious:
-                    unconsciousState();
+                    UnconsciousState();
                     break;
             }
 
@@ -92,75 +74,110 @@ public abstract class Player_Base : MonoBehaviour
 
     //MOVEMENT RELATED METHODS//
     //*SEPERATION NEEDS WORK
-    protected void _generalBoidBehavior()
+    //this function only changes direction
+    //Some of this code adapted from Omar Addam (https://github.com/omaddam/Boids-Simulation)
+    private void _generalBoidBehavior()
     {
-        //point agent towards the Snitch
-        transform.LookAt(_snitchObj.transform);
-        Vector3 dirToSnitch = _snitchObj.transform.position - transform.position;
-        dirToSnitch = dirToSnitch.normalized;
+        Vector3 accel = new Vector3();
         
-        //SEPERATION
-        //get neighbours within radius
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, _neighbourAvoidanceRadius);
-        if(hitColliders.Length > 0)
-        {
-            if(DEBUG)
-                Debug.Log("Num Neighbours: " + hitColliders.Length);
-            
-            Vector3 avgNeighbourVector = new Vector3();
-            //generate avg vector of neighbours
-            foreach (Collider col in hitColliders)
-            {
-                
-                if (col.gameObject.GetComponent<Player_Base>())
-                    avgNeighbourVector += col.gameObject.transform.position.normalized;
+        //add force towards snitch
+        accel += (_snitchObj.transform.position - transform.position).normalized;
+        accel += NormalizeSteeringForce(_snitchObj.transform.position - transform.position) *
+                 playerConstants.snitchFollowWeight;
+        Debug.DrawRay(transform.position,accel,Color.red);
+        
+        
+        //add force away from neighbours - seperation
+        Collider[] neighbours = Physics.OverlapSphere(transform.position, playerConstants.neighbourDetctionRadius);
+        if (neighbours.Length > 0)
+            accel += TeamSpecificSeperation(neighbours);
+        
+        //need to add force away from environment
 
-                if (DEBUG)
-                    Debug.DrawLine(transform.position, col.transform.position,Color.red);
-            }
+        
+        //create new velocity based on calculated acceleration
+        Vector3 newVel = _rb.velocity;
+        newVel += accel * Time.deltaTime;
+        
+        //clamp velocity
+        newVel = newVel.normalized * Mathf.Clamp(newVel.magnitude, 0.0f, maxVelocity);
+        
+        //apply velocity
+        _rb.velocity = newVel;
+        transform.forward = _rb.velocity.normalized;
 
-            avgNeighbourVector /= hitColliders.Length;
-            dirToSnitch += avgNeighbourVector;
-        }
-
-        //dirToSnitch is now normalized and seperating from neighbours
-        _rb.velocity = dirToSnitch*_currentSpeed;
-
-        if (DEBUG)
-            Debug.DrawRay(transform.position, dirToSnitch*_currentSpeed);
 
     }
+    
+    //From Omar Addam https://github.com/omaddam/Boids-Simulation
+    protected Vector3 NormalizeSteeringForce(Vector3 force)
+    {
+        return force.normalized * Mathf.Clamp(force.magnitude, 0, playerConstants.maxSteeringForce);
+    }
 
-
+    
+ 
     //SPEED REGULATION//
-    public void consciousState() 
+    public void ConsciousState() 
     {
-        float distToSnitch = (_snitchObj.transform.position - transform.position).magnitude;
-        _currentSpeed = 5.0f;
-        _currentSpeed = SpeedExhaustReg.regulateSpeed(_currentSpeed,_maxVelocity,distToSnitch,_aggro,_currentExhaust);
-        _generalBoidBehavior();
-        teamSpecificBehavior();
+        //handle exhaustion lovic
+        _handleExhaustionTick();
         
-    
+        _generalBoidBehavior();
+        
     }
 
-    public void unconsciousState()
+    public void UnconsciousState()
     {
 
     }
-    
+
+    private void _handleExhaustionTick()
+    {
+        //tick exhaustion if timer has elapsed
+        _exhaustTimer += Time.deltaTime;
+        if (_exhaustTimer > playerConstants.exhastionTickFreq)
+        {
+            //calculate new exhaust
+            currentExhaust = SpeedExhaustReg.TickExhaust(currentExhaust, _currentSpeed,
+                maxVelocity,playerConstants);
+            
+            
+            if(currentExhaust <= 0)
+                //setState(PlayerState.Unconscious);
+
+                _exhaustTimer = 0;
+        }
+    }
     
     //GET/SET///
-    public void setSnitchObj(GameObject newSnitch)
+    public void SetSnitchObj(GameObject newSnitch)
     {
         _snitchObj = newSnitch;
         
     }
-    public void setState(PlayerState newState) { _state = newState; }
-    public PlayerState getState() { return _state; }
+    public void SetState(PlayerState newState) { state = newState; }
+    public PlayerState GETState() { return state; }
+
+    public float GetAggro()
+    {
+        return aggro;
+        
+    }
+    
+    public float GetCurrentExhaust() {return currentExhaust;}
+    public float GetMaxExhaust(){return maxExhaust;}
 
     //ABSTRACT METHODS//
-    public abstract void generateTraitValues();
+    public abstract void GenerateTraitValues();
 
-    public abstract void teamSpecificBehavior();
+
+    public abstract Vector3 TeamSpecificSeperation(Collider[] neighbours);
+    
+    
+    //UTILITILES//
+    public static void ResolveCollision(PlayerBase playerOne, PlayerBase playerTwo)
+    {
+        
+    }
 }

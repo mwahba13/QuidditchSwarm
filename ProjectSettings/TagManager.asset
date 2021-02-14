@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Boundary
   - Snitch
+  - PlayerBase
+  - Gryffindor
+  - Slytherin
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Serialization;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -15,36 +16,41 @@ public class SpawnManager : MonoBehaviour
     private int numGryffinToSpawn;
     [SerializeField]
     private int numSlytherinToSpawn;
-
-    private GameObject _snitchObj;
+    
+    private GameObject snitchObj;
 
     public void Start()
     {
-        _snitchObj = GameObject.FindWithTag("Snitch");
-        spawnTeam(numGryffinToSpawn, true,_snitchObj);
+        snitchObj = GameObject.FindWithTag("Snitch");
+        SpawnTeam(numGryffinToSpawn, true,snitchObj);
+        SpawnTeam(numSlytherinToSpawn,false,snitchObj);
     }
 
-    public void spawnTeam(int numToSpawn, bool isGryffindor, GameObject snitchObj)
+    public void SpawnTeam(int numToSpawn, bool isGryffindor, GameObject snitchObj)
     {
         GameObject newPlayer = null;
         if (isGryffindor)
             newPlayer = gryffindorPrefab;
-        else { }
-            //new slytherin
+        else
+            newPlayer = slytherinPrefab;
+        
+            
 
         Transform spawnTrans = null;
         if (isGryffindor)
             spawnTrans = gryffindorSpawn;
-        else { }
+        else
+            spawnTrans = slytherinSpawn;
 
         for (int i = 0; i < numToSpawn; i++)
         {
             GameObject newObj = Instantiate<GameObject>(newPlayer, new Vector3(spawnTrans.position.x + i,
                0, spawnTrans.position.z), Quaternion.identity);
 
-            Player_Base newBase = null;
-            newBase.setSnitchObj(snitchObj);
-            newObj.TryGetComponent<Player_Base>(out newBase);
+            PlayerBase newBase = null;
+            newObj.TryGetComponent<PlayerBase>(out newBase); 
+            newBase.SetSnitchObj(snitchObj);
+
 
         }
 

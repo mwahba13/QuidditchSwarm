@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 7373489663972688596}
   - component: {fileID: 7373489663972688597}
   - component: {fileID: 7373489663972688593}
-  - component: {fileID: 3424568403427619156}
-  m_Layer: 0
+  - component: {fileID: 6061355046513969930}
+  m_Layer: 8
   m_Name: Gryffindor
-  m_TagString: Untagged
+  m_TagString: Gryffindor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: da3eb7a3537ce1245b49d179ad2446d7, type: 2}
+  - {fileID: 2100000, guid: 76d2fa725351f0d4a98a563f22b5e0ea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,7 +111,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3424568403427619156
+--- !u!114 &6061355046513969930
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,11 +123,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37402d8d66215054fa0fac890f515b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DEBUG: 1
-  _aggro: 0
-  _maxExhaust: 0
-  _currentExhaust: 0
-  _maxVelocity: 0
-  _weight: 0
-  _neighbourAvoidanceRadius: 0
+  aggro: 0
+  maxExhaust: 0
+  currentExhaust: 0
+  maxVelocity: 0
+  weight: 0
+  state: 1
+  _snitchObj: {fileID: 0}
   playerConstants: {fileID: 11400000, guid: bc28a1c9b767b0a408600a1eaef7b534, type: 2}
+  gryffTraits: {fileID: 11400000, guid: a1e3ab194f45c594e9383a9e17010cc8, type: 2}
