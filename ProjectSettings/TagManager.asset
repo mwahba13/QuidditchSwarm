@@ -9,6 +9,8 @@ TagManager:
   - PlayerBase
   - Gryffindor
   - Slytherin
+  - Ground
+  - Environment
   layers:
   - Default
   - TransparentFX

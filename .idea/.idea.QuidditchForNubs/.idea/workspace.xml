@@ -2,50 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2e35bed-f8cd-453a-b5d2-45a83ae45dbe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/GryffindorTraitsScriptable.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/GryffindorTraitsScriptable.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/SlytherinTraitsScriptable.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/SlytherinTraitsScriptable.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/SnitchScriptable.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/SnitchScriptable.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/CollisionHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/CollisionHandler.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.QuidditchForNubs/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QuidditchForNubs/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.QuidditchForNubs/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QuidditchForNubs/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Red.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Red.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Red.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Red.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PlayerConstantsObj.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PlayerConstantsObj.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Gryffindor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Gryffindor.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Snitch.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Snitch.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AgentSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AgentSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Slytherin.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Slytherin.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entities/Gryffindor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entities/Gryffindor.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entities/Player_Base.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entities/Player_Base.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entities/Slytherin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entities/Slytherin.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entities/Snitch/Snitch_AI.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entities/Snitch/Snitch_AI.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entities/Snitch/Snitch_Move.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entities/Snitch/Snitch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entities/Snitch/Snitch_Move.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entities/Snitch/Snitch.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entities/Snitch/Snitch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entities/Snitch/Snitch.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/SpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/SpawnManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/PlayerConstants.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/PlayerConstants.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/GaussHouse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/GaussHouse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/SlytherinTraitsScriptable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/SlytherinTraitsScriptable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/SnitchScriptable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/SnitchScriptable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/CollisionHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/CollisionHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/SpeedExhaustReg.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/SpeedExhaustReg.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SnitchSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SnitchSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ArtifactDB" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ArtifactDB" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Rider.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Rider.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.TextMeshPro.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.TextMeshPro.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Timeline.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Timeline.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Timeline.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Timeline.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.VSCode.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.VSCode.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEditor.TestRunner.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEditor.TestRunner.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEditor.UI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEditor.UI.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEngine.TestRunner.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEngine.TestRunner.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEngine.UI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEngine.UI.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ShaderCache/EditorEncounteredVariants" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ShaderCache/EditorEncounteredVariants" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/SourceAssetDB" beforeDir="false" afterPath="$PROJECT_DIR$/Library/SourceAssetDB" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/StateCache/Hierarchy/18d97c-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/Hierarchy/18d97c-mainStage.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/StateCache/SceneView/644606-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/SceneView/644606-mainStage.json" afterDir="false" />
@@ -76,21 +53,25 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Player_SpeedReg.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Entities/SpeedReg.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Entities/SpeedExhaustReg.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Utilities/SpeedExhaustReg.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Snitch/Snitch_Move.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/SnitchScriptable.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Snitch/Snitch.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/PlayerConstants.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/GryffindorTraits.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Managers/SpawnManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/SlytherinTraitsScriptable.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Slytherin.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/GryffindorTraitsScriptable.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Utilities/GaussHouse.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Entities/CollisionHandler.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Player_Base.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/SlytherinTraitsScriptable.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Managers/SpawnManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/PlayerConstants.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Utilities/CollisionHandler.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Utilities/SpeedExhaustReg.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Gryffindor.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Slytherin.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/SnitchScriptable.cs" />
+      <option value="$PROJECT_DIR$/Assets/UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Managers/UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Snitch/Snitch.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Player_Base.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Managers/ScoreManager.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1oFVIrbjITwIiPMQnksOEnL1VWi" />
@@ -105,6 +86,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.35036203" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
+    <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -150,15 +132,20 @@
       <workItem from="1613087848141" duration="3677000" />
       <workItem from="1613145008028" duration="1235000" />
       <workItem from="1613146279960" duration="10393000" />
-      <workItem from="1613330678552" duration="2246000" />
+      <workItem from="1613330678552" duration="3254000" />
+      <workItem from="1613359884810" duration="973000" />
+      <workItem from="1613360971839" duration="2736000" />
+      <workItem from="1613419698993" duration="2718000" />
+      <workItem from="1613516603745" duration="2897000" />
+      <workItem from="1613519782659" duration="1163000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
-  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>

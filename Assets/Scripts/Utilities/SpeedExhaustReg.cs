@@ -29,4 +29,10 @@ public class SpeedExhaustReg : MonoBehaviour
         return (currentExhaust + (playerConstants.maxExhaustionDepletion * speedRatio));
     }
     
+    //From Omar Addam https://github.com/omaddam/Boids-Simulation
+    public static Vector3 NormalizeSteeringForce(Vector3 force,float maxSteerForce)
+    {
+        return force.normalized * Mathf.Clamp(force.magnitude, 0, maxSteerForce);
+    }
+    
 }

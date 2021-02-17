@@ -16,10 +16,14 @@ MonoBehaviour:
   maxExhaustionDepletion: 10
   exhaustRegainValue: 0
   exhaustThreshold: 0
+  inactiveTime: 3
   neighbourDetctionRadius: 1
   neighbourAvoidanceWeight: 0.5
   snitchFollowWeight: 1
+  environmentAvoidanceWeight: 1
   speedTuningValue: 4
   maxSteeringForce: 1
-  showNeighbourLineTraces: 0
-  showAgentVector: 1
+  showNeighbourLineTraces: 1
+  showVectorTowardSnitch: 1
+  showSeperationVector: 1
+  showAgentVelocity: 1

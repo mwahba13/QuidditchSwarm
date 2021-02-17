@@ -12,13 +12,25 @@ namespace ScriptableObjs
 
         public float snitchSpeed;
 
+        public float maxSteeringForce;
+
+        public float maxVelocity;
+
         [Tooltip("Radius that detects collisions objects to avoid")]
         public float collisionRadiusDetection;
+
+        [Tooltip("How hard the snitch will turn to avoid environment")]
+        public float environmentAvoidanceWeighting;
+
         
-        [Header("Debug")] 
         
-        [Tooltip("Show snitches new calculated direction")]
-        public bool showNewDirection;
+        [Header("Debug")]
+        
+        [Tooltip("Shows environment avoidance vector (Red)")]
+        public bool showEnvironmentAvoidVector;
+        
+        [Tooltip("Show snitches new calculated direction (Blue)")]
+        public bool showDirectionVector;
 
     }
 }

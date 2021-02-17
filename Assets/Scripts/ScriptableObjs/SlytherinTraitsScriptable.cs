@@ -7,7 +7,6 @@ namespace ScriptableObjs
     {
         [Header("Common Traits (Mean, STD)")] 
         
-
         public Vector2 weight;
 
         public Vector2 maxVelocity;

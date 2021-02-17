@@ -33,25 +33,29 @@ public class Slytherin : PlayerBase
 
         foreach (Collider neigh in neighbours)
         {
-            //avoid teammates
-            if (neigh.gameObject.CompareTag("Slytherin"))
-                newVec += NormalizeSteeringForce((transform.position - neigh.gameObject.transform.position)
-                                                 * playerConstants.neighbourAvoidanceWeight);
+            //avoid teammates, ground and environment
+            if (neigh.gameObject.CompareTag("Slytherin") || neigh.gameObject.CompareTag("Environment")
+                                                         || neigh.gameObject.CompareTag("Ground"))
+                newVec += SpeedExhaustReg.NormalizeSteeringForce((transform.position - neigh.gameObject.transform.position),
+                              playerConstants.maxSteeringForce) * playerConstants.neighbourAvoidanceWeight;
 
             else if (neigh.gameObject.CompareTag("Gryffindor"))
             {
                 //will try to ram gryffindor depending how much of a brute this agent is
-                newVec += NormalizeSteeringForce((neigh.gameObject.transform.position - transform.position)
-                                                 * CalculateBruiserRate());
+                newVec += SpeedExhaustReg.NormalizeSteeringForce(
+                    (neigh.gameObject.transform.position - transform.position), playerConstants.maxSteeringForce)
+                          *CalculateBruiserRate();
+          
             }
             
 
             
             if(playerConstants.showNeighbourLineTraces)
-                Debug.DrawLine(transform.position,neigh.transform.position,Color.white);
+                Debug.DrawLine(transform.position,neigh.transform.position,Color.magenta,duration:2.0f);
         }
         
-
+        if(playerConstants.showSeperationVector)
+            Debug.DrawRay(transform.position,newVec,Color.green);
         
         return newVec;
     }
@@ -63,6 +67,20 @@ public class Slytherin : PlayerBase
             CollisionHandler.ResolveDiffTeamCollision(this.GetComponent<PlayerBase>(),other.gameObject.GetComponent<PlayerBase>());
         else if(other.gameObject.CompareTag("Slytherin"))
             CollisionHandler.ResolveSameTeamCollision(this.gameObject,other.gameObject);
+        
+        else if (other.gameObject.CompareTag("Ground"))
+        {
+            //player is already unconscious and falling
+            if (state.Equals(PlayerState.Unconscious))
+                TransitionState(PlayerState.Waiting);
+            
+        }
+
+        else if (other.gameObject.CompareTag("Environment"))
+            TransitionState(PlayerState.Unconscious);
+        
+        
+        
     }
 
 

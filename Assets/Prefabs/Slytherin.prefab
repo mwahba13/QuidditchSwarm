@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3279881625389671107}
   - component: {fileID: 2502773846031945232}
   - component: {fileID: 5280731754831387212}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Slytherin
   m_TagString: Slytherin
   m_Icon: {fileID: 0}
@@ -129,5 +129,6 @@ MonoBehaviour:
   maxVelocity: 0
   weight: 0
   state: 1
+  _snitchObj: {fileID: 0}
   playerConstants: {fileID: 11400000, guid: bc28a1c9b767b0a408600a1eaef7b534, type: 2}
   slythTraits: {fileID: 11400000, guid: 38f4d5fe529fe404c917b82577b24e2c, type: 2}

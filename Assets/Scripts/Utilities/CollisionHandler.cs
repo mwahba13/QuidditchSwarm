@@ -4,8 +4,7 @@ namespace System
 {
     public class CollisionHandler : MonoBehaviour
     {
-        //ref to last handled collision
-        private static Collision _lastCollision = null;
+
         
         
         private static System.Random _sysRand = new System.Random();
@@ -15,13 +14,11 @@ namespace System
         public static void ResolveDiffTeamCollision(PlayerBase play1, PlayerBase play2)
         {
             
-            Debug.Log("Enter collision resolution b/w " + play1.GetInstanceID() + " & " + play2.GetInstanceID());
             
             //first check if this collision already happened by seeing if both players are conscious
-            if (!play1.GETState().Equals(PlayerBase.PlayerState.Unconscious) &&
-                !play2.GETState().Equals(PlayerBase.PlayerState.Unconscious))
+            if (!play1.GetState().Equals(PlayerBase.PlayerState.Unconscious) &&
+                !play2.GetState().Equals(PlayerBase.PlayerState.Unconscious))
             {
-                Debug.Log("Inner collision resolution b/w " + play1.GetInstanceID() + " & " + play2.GetInstanceID());
                 double play1Val = play1.GetAggro() * (_sysRand.NextDouble() * (1.2 - 0.8) + 0.8)
                                                    * (1 - (play1.GetCurrentExhaust() / play1.GetMaxExhaust()));
 
@@ -29,9 +26,9 @@ namespace System
                                                    * (1 - (play2.GetCurrentExhaust() / play2.GetMaxExhaust()));
 
                 if (play1Val > play2Val)
-                    play2.SetState(PlayerBase.PlayerState.Unconscious);
+                    play2.TransitionState(PlayerBase.PlayerState.Unconscious);
                 else        
-                    play1.SetState(PlayerBase.PlayerState.Unconscious);
+                    play1.TransitionState(PlayerBase.PlayerState.Unconscious);
             }
 
         

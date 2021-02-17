@@ -44,12 +44,14 @@ public class SpawnManager : MonoBehaviour
 
         for (int i = 0; i < numToSpawn; i++)
         {
+
             GameObject newObj = Instantiate<GameObject>(newPlayer, new Vector3(spawnTrans.position.x + i,
                0, spawnTrans.position.z), Quaternion.identity);
 
             PlayerBase newBase = null;
             newObj.TryGetComponent<PlayerBase>(out newBase); 
             newBase.SetSnitchObj(snitchObj);
+            newBase.setSpawnPoint(spawnTrans);
 
 
         }

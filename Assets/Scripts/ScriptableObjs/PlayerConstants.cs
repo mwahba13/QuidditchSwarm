@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace ScriptableObjs
 {
@@ -18,7 +19,9 @@ namespace ScriptableObjs
         
         [Tooltip("If agent's currentSpeed/MaxSpeed ratio is above this threshold, it will exhaust")]
         public float exhaustThreshold;
-        
+
+        [Tooltip("Amount of time that player remains inactive when unconscious.")]
+        public float inactiveTime;
         
         
         [Header("Boid Values")]
@@ -32,6 +35,9 @@ namespace ScriptableObjs
         [Tooltip("Weighting for how hard the force towards the snitch is")]
         public float snitchFollowWeight;
 
+        [Tooltip("Weighting for how hard the force to avoid the environment is.")]
+        public float environmentAvoidanceWeight;
+        
         [Tooltip("Speed modifier to speed up or slow down all agents")]
         public float speedTuningValue;
 
@@ -40,11 +46,17 @@ namespace ScriptableObjs
         
         [Header("Debug")]
         
-        [Tooltip("Shows lines between nearest detected neighbours")]
+        [Tooltip("Shows lines between nearest detected neighbours/obstacles - Magenta")]
         public bool showNeighbourLineTraces;
 
-        [Tooltip("Shows agent direction vector")]
-        public bool showAgentVector;
+        [Tooltip("Shows vector towards snitch - Red")]
+        public bool showVectorTowardSnitch;
+
+        [Tooltip("Shows seperation vector - Green")]
+        public bool showSeperationVector;
+
+        [Tooltip("Shows final calculated velocity - White")]
+        public bool showAgentVelocity;
 
     }
 }

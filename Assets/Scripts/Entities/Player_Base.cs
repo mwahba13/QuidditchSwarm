@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Numerics;
 using ScriptableObjs;
 using UnityEngine.Serialization;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 [RequireComponent( typeof(Rigidbody))]
 [RequireComponent(typeof(Collider))]
@@ -13,8 +16,13 @@ public abstract class PlayerBase : MonoBehaviour
     public enum PlayerState : uint
     {
 
-        Unconscious, Conscious
+        Unconscious, Conscious, Waiting
 
+    }
+
+    public enum Team : uint
+    {
+        Gryffindor,Slytherin, Null
     }
 
     //Player traits, all between 0.0 and 1.0
@@ -41,8 +49,12 @@ public abstract class PlayerBase : MonoBehaviour
 
     public PlayerConstants playerConstants;
 
-    private float _currentSpeed;
     private float _exhaustTimer;
+    private float _waitingTimer = 0 ;
+
+    private Transform _spawnTransform;
+
+    //if true, player is on ground, at spawn,  waiting to be active again
     
     public void Start()
     {
@@ -59,7 +71,7 @@ public abstract class PlayerBase : MonoBehaviour
     public void FixedUpdate()
     {
  
-            switch (GETState())
+            switch (GetState())
             {
                 case PlayerState.Conscious:
                     ConsciousState();
@@ -68,8 +80,14 @@ public abstract class PlayerBase : MonoBehaviour
                 case PlayerState.Unconscious:
                     UnconsciousState();
                     break;
+                
+                case PlayerState.Waiting:
+                    WaitingState();
+                    break;
             }
-
+    
+            if(playerConstants.showAgentVelocity)
+                Debug.DrawRay(transform.position,_rb.velocity,Color.white);
     }
 
     //MOVEMENT RELATED METHODS//
@@ -79,20 +97,24 @@ public abstract class PlayerBase : MonoBehaviour
     private void _generalBoidBehavior()
     {
         Vector3 accel = new Vector3();
+
+        Vector3 snitchPos = _snitchObj.transform.position;
+        Vector3 thisPos = transform.position;
         
         //add force towards snitch
-        accel += (_snitchObj.transform.position - transform.position).normalized;
-        accel += NormalizeSteeringForce(_snitchObj.transform.position - transform.position) *
+        accel += (snitchPos - transform.position).normalized;
+        accel += SpeedExhaustReg.NormalizeSteeringForce(snitchPos - thisPos,playerConstants.maxSteeringForce) *
                  playerConstants.snitchFollowWeight;
-        Debug.DrawRay(transform.position,accel,Color.red);
         
+        if(playerConstants.showVectorTowardSnitch)
+            Debug.DrawRay(transform.position,accel,Color.red);
         
-        //add force away from neighbours - seperation
+        //add force away from neighbours and environment - seperation
         Collider[] neighbours = Physics.OverlapSphere(transform.position, playerConstants.neighbourDetctionRadius);
         if (neighbours.Length > 0)
             accel += TeamSpecificSeperation(neighbours);
         
-        //need to add force away from environment
+        
 
         
         //create new velocity based on calculated acceleration
@@ -109,28 +131,64 @@ public abstract class PlayerBase : MonoBehaviour
 
     }
     
-    //From Omar Addam https://github.com/omaddam/Boids-Simulation
-    protected Vector3 NormalizeSteeringForce(Vector3 force)
-    {
-        return force.normalized * Mathf.Clamp(force.magnitude, 0, playerConstants.maxSteeringForce);
-    }
+
 
     
  
-    //SPEED REGULATION//
+    //STATE FUNCTIONS//
     public void ConsciousState() 
     {
         //handle exhaustion lovic
         _handleExhaustionTick();
-        
         _generalBoidBehavior();
         
     }
 
     public void UnconsciousState()
     {
+        
 
     }
+
+    //in this state
+    public void WaitingState()
+    {
+        _waitingTimer += Time.deltaTime;
+        if (_waitingTimer >= playerConstants.inactiveTime)
+        {
+            TransitionState(PlayerState.Conscious);
+        }
+    }
+
+    public void TransitionState(PlayerState newState)
+    {
+        //conscious -> unconscious
+        if (state.Equals(PlayerState.Conscious) && newState.Equals(PlayerState.Unconscious))
+        {
+            //transport back to spawn and set a timer
+            //transform.SetPositionAndRotation(_spawnTransform.position,Quaternion.identity);
+            //_unconsciousTimer = 0;
+            _rb.useGravity = true;
+        }
+        
+        //unconscious -> waiting
+        else if (state.Equals(PlayerState.Unconscious) && newState.Equals(PlayerState.Waiting))
+        {
+            transform.SetPositionAndRotation(_spawnTransform.position,Quaternion.identity);
+            _waitingTimer = 0;
+        }
+        
+        //waiting -> conscious
+        else if (state.Equals(PlayerState.Waiting) && newState.Equals(PlayerState.Conscious))
+        {
+            _rb.useGravity = false;
+            currentExhaust = 0;
+        }
+        
+        state = newState;
+
+    }
+
 
     private void _handleExhaustionTick()
     {
@@ -139,7 +197,7 @@ public abstract class PlayerBase : MonoBehaviour
         if (_exhaustTimer > playerConstants.exhastionTickFreq)
         {
             //calculate new exhaust
-            currentExhaust = SpeedExhaustReg.TickExhaust(currentExhaust, _currentSpeed,
+            currentExhaust = SpeedExhaustReg.TickExhaust(currentExhaust, _rb.velocity.magnitude,
                 maxVelocity,playerConstants);
             
             
@@ -157,7 +215,11 @@ public abstract class PlayerBase : MonoBehaviour
         
     }
     public void SetState(PlayerState newState) { state = newState; }
-    public PlayerState GETState() { return state; }
+   
+    //need this one for teleporting once unconscious
+    public void setSpawnPoint(Transform newTran) {_spawnTransform = newTran;}
+    
+    public PlayerState GetState() { return state; }
 
     public float GetAggro()
     {
@@ -167,6 +229,8 @@ public abstract class PlayerBase : MonoBehaviour
     
     public float GetCurrentExhaust() {return currentExhaust;}
     public float GetMaxExhaust(){return maxExhaust;}
+    
+    
 
     //ABSTRACT METHODS//
     public abstract void GenerateTraitValues();
