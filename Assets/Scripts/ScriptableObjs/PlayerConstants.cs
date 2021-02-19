@@ -38,6 +38,9 @@ namespace ScriptableObjs
         [Tooltip("Weighting for how hard the force to avoid the environment is.")]
         public float environmentAvoidanceWeight;
         
+       
+        public float environmentAvoidanceRadius;
+        
         [Tooltip("Speed modifier to speed up or slow down all agents")]
         public float speedTuningValue;
 

@@ -10,11 +10,15 @@ namespace ScriptableObjs
         [Tooltip("Time after which snitch will choose a new random direction")]
         public float directionTimer;
 
-        public float snitchSpeed;
-
         public float maxSteeringForce;
 
         public float maxVelocity;
+
+        public float minVelocity;
+
+        public float snitchSpeed;
+
+        public float randomDirectionWeight;
 
         [Tooltip("Radius that detects collisions objects to avoid")]
         public float collisionRadiusDetection;
@@ -31,6 +35,8 @@ namespace ScriptableObjs
         
         [Tooltip("Show snitches new calculated direction (Blue)")]
         public bool showDirectionVector;
+
+        public bool showRandomVector;
 
     }
 }

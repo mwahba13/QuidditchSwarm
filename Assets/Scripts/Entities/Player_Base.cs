@@ -65,6 +65,9 @@ public abstract class PlayerBase : MonoBehaviour
 
         _exhaustTimer = playerConstants.exhastionTickFreq;
         _rb.mass = weight;
+        
+        //give a lil push
+        _rb.AddForce(Vector3.forward);
     }
 
 
@@ -113,8 +116,9 @@ public abstract class PlayerBase : MonoBehaviour
         Collider[] neighbours = Physics.OverlapSphere(transform.position, playerConstants.neighbourDetctionRadius);
         if (neighbours.Length > 0)
             accel += TeamSpecificSeperation(neighbours);
-        
-        
+
+        accel += SpeedExhaustReg.NormalizeSteeringForce(AvoidCollisions(), playerConstants.maxSteeringForce)
+                 * playerConstants.environmentAvoidanceWeight;
 
         
         //create new velocity based on calculated acceleration
@@ -206,6 +210,52 @@ public abstract class PlayerBase : MonoBehaviour
 
                 _exhaustTimer = 0;
         }
+    }
+    private Vector3 AvoidCollisions()
+    {
+        Vector3 output = Vector3.zero;
+        
+        //https://github.com/omaddam/Boids-Simulation
+        if(!Physics.SphereCast(transform.position,
+            playerConstants.environmentAvoidanceRadius,
+            transform.forward,
+            out RaycastHit hitInfo,
+            playerConstants.environmentAvoidanceRadius))
+            return Vector3.zero;
+
+        return transform.position - hitInfo.point;
+        
+        
+        
+        /*
+        //ignore gryff/slyth players
+        //LayerMask ignoreLayers = LayerMask.GetMask("Player");
+        Collider[] hits = Physics.OverlapSphere(transform.position, snitchSettings.collisionRadiusDetection);
+        if (hits.Length > 0)
+        {
+            foreach(Collider hit in hits)
+            {
+                if (hit.gameObject.CompareTag("Environment"))
+                {
+                    Debug.Log("avoid collision");
+                    output += SpeedExhaustReg.NormalizeSteeringForce((transform.position - hit.transform.position),
+                        snitchSettings.maxSteeringForce) * snitchSettings.environmentAvoidanceWeighting; 
+                }
+
+            }
+            
+            //give timer 2 extra seconds to let snitch get back roughly to middle 
+            _timer = -2.0f;
+        }
+        
+        if(snitchSettings.showEnvironmentAvoidVector)
+            Debug.DrawRay(transform.position,output,Color.red);
+            
+            return output;
+            */
+        
+        
+
     }
     
     //GET/SET///

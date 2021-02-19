@@ -2,11 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Numerics;
+using System.Runtime.CompilerServices;
 using ScriptableObjs;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
+using Vector3 = UnityEngine.Vector3;
 
 
 public class Snitch : MonoBehaviour
@@ -19,7 +22,8 @@ public class Snitch : MonoBehaviour
     private Rigidbody _rb;
     private ScoreEvent _scoreEvent;
     
-    public SnitchScriptable snitchSettings; 
+    public SnitchScriptable snitchSettings;
+    
 
     private void Start()
     {
@@ -29,43 +33,76 @@ public class Snitch : MonoBehaviour
         _scoreEvent = new ScoreEvent();
         _scoreEvent.AddListener(ScoreManager.IncrementScore);
         
+
+        
         TryGetComponent<Rigidbody>(out _rb);
+        //give it a lil push
+        //_rb.AddForce(Vector3.forward);
         
     }   
 
 
     //TODO: fix snitches movement
-    //TODO: SCORING
     private void FixedUpdate()
     {
+
         Vector3 accel = new Vector3();
-        
-        //redirect timer
+
         _timer += Time.deltaTime;
         if (_timer >= snitchSettings.directionTimer)
         {
-            //Redirect(Random.insideUnitSphere*snitchSettings.snitchSpeed);
-            Vector3 randomDir = (Random.onUnitSphere - transform.position)*snitchSettings.snitchSpeed;
-            
-            accel += randomDir;
-            accel += SpeedExhaustReg.NormalizeSteeringForce(randomDir, snitchSettings.maxSteeringForce);
+            Vector3 randDir = (Random.onUnitSphere - transform.position) * snitchSettings.snitchSpeed;
+            accel += randDir;
+            accel += SpeedExhaustReg.NormalizeSteeringForce(randDir, snitchSettings.maxSteeringForce);
+            _timer = 0.0f;
+        }
+        
+        accel += SpeedExhaustReg.NormalizeSteeringForce(AvoidCollisions(), snitchSettings.maxSteeringForce)
+         *snitchSettings.environmentAvoidanceWeighting;
+
+        Vector3 newVelocity = _rb.velocity;
+        newVelocity += accel * Time.deltaTime;
+        
+        //clamp velocity
+        newVelocity = newVelocity.normalized * Mathf.Clamp(newVelocity.magnitude, snitchSettings.minVelocity,
+            snitchSettings.maxVelocity);
+
+        _rb.velocity = newVelocity;
+
+        transform.forward = _rb.velocity.normalized;
+
+        /*
+        Vector3 accel = new Vector3();
+
+        _timer += Time.deltaTime;
+        if (_timer >= snitchSettings.directionTimer)
+        {
+
+            Vector3 randDir = (Random.onUnitSphere - transform.position) * snitchSettings.snitchSpeed;
+
+            accel += randDir;
+            accel += SpeedExhaustReg.NormalizeSteeringForce(randDir, snitchSettings.maxSteeringForce);
             _timer = 0.0f;
         }
 
-        accel += AvoidCollisions();
+
+        //accel += SpeedExhaustReg.NormalizeSteeringForce(AvoidCollisions(), snitchSettings.maxSteeringForce)
+           // *snitchSettings.environmentAvoidanceWeighting;
 
         Vector3 newVel = _rb.velocity;
         newVel += accel * Time.deltaTime;
-        
+    
         //clamp velocity
-        newVel = newVel.normalized * Mathf.Clamp(newVel.magnitude, 0.0f, snitchSettings.maxVelocity);
+        newVel = newVel.normalized * Mathf.Clamp(newVel.magnitude, snitchSettings.minVelocity,
+            snitchSettings.maxVelocity);
 
         _rb.velocity = newVel;
 
         if (snitchSettings.showDirectionVector)
             Debug.DrawRay(transform.position,newVel,Color.cyan);
-        
+    
         transform.forward = _rb.velocity.normalized;
+        */
 
 
     }
@@ -76,6 +113,8 @@ public class Snitch : MonoBehaviour
             _scoreEvent.Invoke(PlayerBase.Team.Gryffindor);
         else if(other.collider.CompareTag("Slytherin"))
             _scoreEvent.Invoke(PlayerBase.Team.Slytherin);
+        else if (other.collider.CompareTag("Environment"))
+            _rb.velocity = -_rb.velocity;
             
     }
 
@@ -85,25 +124,18 @@ public class Snitch : MonoBehaviour
     {
         Vector3 output = Vector3.zero;
         
-        //ignore gryff/slyth players
-        LayerMask ignoreLayers = LayerMask.GetMask("Player");
-        Collider[] hits = Physics.OverlapSphere(transform.position, snitchSettings.collisionRadiusDetection,ignoreLayers);
-        if (hits.Length > 0)
-        {
-            foreach(Collider hit in hits)
-            {
-                output += SpeedExhaustReg.NormalizeSteeringForce((transform.position - hit.transform.position),
-                    snitchSettings.maxSteeringForce) * snitchSettings.environmentAvoidanceWeighting;
-            }
-            
-            //give timer 2 extra seconds to let snitch get back roughly to middle 
-            _timer = -2.0f;
-        }
+        //https://github.com/omaddam/Boids-Simulation
+        if(!Physics.SphereCast(transform.position,
+                snitchSettings.collisionRadiusDetection,
+                transform.forward,
+                out RaycastHit hitInfo,
+                snitchSettings.collisionRadiusDetection))
+                return Vector3.zero;
+
+        return transform.position - hitInfo.point;
+
         
-        if(snitchSettings.showEnvironmentAvoidVector)
-            Debug.DrawRay(transform.position,output,Color.red);
         
-        return output;
 
     }
     

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3bd8445af5f4a41b2cdb7cb4c2ec770, type: 3}
   m_Name: SnitchSettings
   m_EditorClassIdentifier: 
-  directionTimer: 5
-  snitchSpeed: 50
+  directionTimer: 1
   maxSteeringForce: 100
   maxVelocity: 20
-  collisionRadiusDetection: 100
+  minVelocity: 10
+  collisionRadiusDetection: 5
   environmentAvoidanceWeighting: 1
   showEnvironmentAvoidVector: 1
   showDirectionVector: 1
