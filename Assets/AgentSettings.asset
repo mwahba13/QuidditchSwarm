@@ -14,15 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exhastionTickFreq: 5
   maxExhaustionDepletion: 10
-  exhaustRegainValue: 0
-  exhaustThreshold: 0
+  exhaustRegainValue: 10
+  exhaustThreshold: 0.5
   inactiveTime: 3
-  neighbourDetctionRadius: 1
+  neighbourDetctionRadius: 3
   neighbourAvoidanceWeight: 0.5
-  snitchFollowWeight: 1
+  snitchFollowWeight: 0.75
   environmentAvoidanceWeight: 1
+  environmentAvoidanceRadius: 20
   speedTuningValue: 4
-  maxSteeringForce: 1
+  maxSteeringForce: 10
   showNeighbourLineTraces: 1
   showVectorTowardSnitch: 1
   showSeperationVector: 1

@@ -70,6 +70,9 @@ public class Gryffindor : PlayerBase
             TransitionState(PlayerState.Unconscious);
         }
         
+        else if (other.gameObject.CompareTag("Boundary"))
+            _rb.AddForce(-other.gameObject.transform.position);
+        
 
     }
 }

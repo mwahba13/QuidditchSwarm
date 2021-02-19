@@ -113,7 +113,7 @@ public class Snitch : MonoBehaviour
             _scoreEvent.Invoke(PlayerBase.Team.Gryffindor);
         else if(other.collider.CompareTag("Slytherin"))
             _scoreEvent.Invoke(PlayerBase.Team.Slytherin);
-        else if (other.collider.CompareTag("Environment"))
+        else if (other.collider.CompareTag("Boundary") || other.collider.CompareTag("Ground"))
             _rb.velocity = -_rb.velocity;
             
     }

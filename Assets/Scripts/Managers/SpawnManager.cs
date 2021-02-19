@@ -57,5 +57,8 @@ public class SpawnManager : MonoBehaviour
         }
 
     }
+    
+    //TODO: spawn gryffindor and slytherin player functionality
+    
 
 }

@@ -108,15 +108,18 @@ public abstract class PlayerBase : MonoBehaviour
         accel += (snitchPos - transform.position).normalized;
         accel += SpeedExhaustReg.NormalizeSteeringForce(snitchPos - thisPos,playerConstants.maxSteeringForce) *
                  playerConstants.snitchFollowWeight;
-        
         if(playerConstants.showVectorTowardSnitch)
             Debug.DrawRay(transform.position,accel,Color.red);
+        
+        
+        
         
         //add force away from neighbours and environment - seperation
         Collider[] neighbours = Physics.OverlapSphere(transform.position, playerConstants.neighbourDetctionRadius);
         if (neighbours.Length > 0)
             accel += TeamSpecificSeperation(neighbours);
 
+        //avoid environemnt
         accel += SpeedExhaustReg.NormalizeSteeringForce(AvoidCollisions(), playerConstants.maxSteeringForce)
                  * playerConstants.environmentAvoidanceWeight;
 
@@ -134,11 +137,7 @@ public abstract class PlayerBase : MonoBehaviour
 
 
     }
-    
 
-
-    
- 
     //STATE FUNCTIONS//
     public void ConsciousState() 
     {
@@ -150,7 +149,8 @@ public abstract class PlayerBase : MonoBehaviour
 
     public void UnconsciousState()
     {
-        
+        if (_rb.velocity.y > -0.5f && _rb.velocity.y <= 0.5f)
+            TransitionState(PlayerState.Waiting);
 
     }
 
@@ -225,37 +225,7 @@ public abstract class PlayerBase : MonoBehaviour
 
         return transform.position - hitInfo.point;
         
-        
-        
-        /*
-        //ignore gryff/slyth players
-        //LayerMask ignoreLayers = LayerMask.GetMask("Player");
-        Collider[] hits = Physics.OverlapSphere(transform.position, snitchSettings.collisionRadiusDetection);
-        if (hits.Length > 0)
-        {
-            foreach(Collider hit in hits)
-            {
-                if (hit.gameObject.CompareTag("Environment"))
-                {
-                    Debug.Log("avoid collision");
-                    output += SpeedExhaustReg.NormalizeSteeringForce((transform.position - hit.transform.position),
-                        snitchSettings.maxSteeringForce) * snitchSettings.environmentAvoidanceWeighting; 
-                }
-
-            }
-            
-            //give timer 2 extra seconds to let snitch get back roughly to middle 
-            _timer = -2.0f;
-        }
-        
-        if(snitchSettings.showEnvironmentAvoidVector)
-            Debug.DrawRay(transform.position,output,Color.red);
-            
-            return output;
-            */
-        
-        
-
+     
     }
     
     //GET/SET///

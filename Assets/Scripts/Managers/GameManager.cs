@@ -9,6 +9,11 @@ public class GameManager : MonoBehaviour
 
     private static GameState _gameState;
 
+    
+    
+    
+    //todo main menu, initialize team numbers and stats
+    
     private void Start()
     {
         _gameState = GameState.MainMenu;
