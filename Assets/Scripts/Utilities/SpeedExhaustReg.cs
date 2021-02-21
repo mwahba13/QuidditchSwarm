@@ -16,12 +16,13 @@ public class SpeedExhaustReg : MonoBehaviour
     {
         
         float speedRatio = currentSpeed / maxSpeed;
+        float randFloat = Random.Range(0.5f, 1.0f);
 
         //if player is below half their max speed, regain some energy
         if (speedRatio <= 0.5f)
-            return currentExhaust + (10*-speedRatio);
+            return currentExhaust + (10*-speedRatio)*randFloat;
 
-        return currentExhaust + (10*speedRatio);
+        return currentExhaust + (10*speedRatio)*randFloat;
     
     }
     

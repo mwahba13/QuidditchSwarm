@@ -6,6 +6,11 @@ public class GameManager : MonoBehaviour
     public enum GameState : uint { Playing, Paused, MainMenu}
 
     private static SpawnManager _spawnManager;
+    
+    private static GameObject _mainMenuObj;
+    private static GameObject _debugMenuObj;
+    private static GameObject _scoreboardObj;
+    
 
     private static GameState _gameState;
 
@@ -22,19 +27,15 @@ public class GameManager : MonoBehaviour
 
     }
 
-
-
-
-
-    public void SetupGame()
+    private void MainMenu()
     {
-
+        //show main menu, hide debug menu and scoreboard
+        _mainMenuObj.SetActive(true);
+        _debugMenuObj.SetActive(false);
+        _scoreboardObj.SetActive(false);
     }
 
-    public void StartGame()
-    {
-        
-    }
+
 
 
 }

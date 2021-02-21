@@ -125,7 +125,12 @@ public abstract class PlayerBase : MonoBehaviour
                  * playerConstants.environmentAvoidanceWeight;
         
         //adjust speed based on exhaustion
-        
+        float tempMaxVel = maxVelocity;
+        if ((maxExhaust - currentExhaust) <= 8)
+        {
+            tempMaxVel = maxVelocity * Random.Range(0.3f,0.8f);
+        }
+            
 
 
         //create new velocity based on calculated acceleration
@@ -133,13 +138,13 @@ public abstract class PlayerBase : MonoBehaviour
         newVel += accel * Time.deltaTime;
         
         //clamp velocity
-        newVel = newVel.normalized * Mathf.Clamp(newVel.magnitude, 0.0f, maxVelocity);
+        newVel = newVel.normalized * Mathf.Clamp(newVel.magnitude, 0.0f, tempMaxVel);
         
         //apply velocity
         _rb.velocity = newVel;
         transform.forward = _rb.velocity.normalized;
         
-        ExhaustionSpeedReg();
+
 
     }
 
@@ -147,8 +152,9 @@ public abstract class PlayerBase : MonoBehaviour
     public void ConsciousState() 
     {
 
-        _handleExhaustionTick();
+        
         _generalBoidBehavior();
+        _handleExhaustionTick();
         
     }
 
@@ -180,6 +186,7 @@ public abstract class PlayerBase : MonoBehaviour
             //transform.SetPositionAndRotation(_spawnTransform.position,Quaternion.identity);
             //_unconsciousTimer = 0;
             _rb.useGravity = true;
+            _rb.velocity = new Vector3(0, -1, 0);
         }
         
         //unconscious -> waiting
@@ -227,21 +234,6 @@ public abstract class PlayerBase : MonoBehaviour
         }
     }
 
-    //Calculates an upper limit on our players speed based on exhaustion
-    private void ExhaustionSpeedReg()
-    {
-        
-        //if we are arbitrarily close to exhaustion
-        if ((maxExhaust - currentExhaust) <= 20)
-        {
-            Debug.Log("Close to exhaust");
-            _rb.velocity = _rb.velocity * 0.95f;
-        }
-
-        
-
-
-    }
     
     private Vector3 AvoidCollisions()
     {

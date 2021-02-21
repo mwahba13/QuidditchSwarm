@@ -6,8 +6,6 @@
     <e p="E:\Program Files\Unity\Unity Projects\QuidditchForNubs" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="CameraController.cs" t="Include" />
-        <e p="MainMenu.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="Entities" t="Include">
             <e p="Gryffindor.cs" t="Include" />
@@ -29,8 +27,10 @@
             <e p="SnitchScriptable.cs" t="Include" />
           </e>
           <e p="Utilities" t="Include">
+            <e p="CameraController.cs" t="Include" />
             <e p="CollisionHandler.cs" t="Include" />
             <e p="GaussHouse.cs" t="Include" />
+            <e p="MainMenu.cs" t="Include" />
             <e p="SpeedExhaustReg.cs" t="Include" />
           </e>
         </e>
