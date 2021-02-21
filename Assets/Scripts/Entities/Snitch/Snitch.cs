@@ -42,7 +42,6 @@ public class Snitch : MonoBehaviour
     }   
 
 
-    //TODO: fix snitches movement
     private void FixedUpdate()
     {
 

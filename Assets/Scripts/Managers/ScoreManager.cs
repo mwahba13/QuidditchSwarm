@@ -14,8 +14,9 @@ public class ScoreManager : MonoBehaviour
 {
 
     //reference to UI score
-    private static Text gryffScore;
-    private static Text slythScore;
+    [SerializeField]
+    public static Text gryffScore;
+    public static Text slythScore;
     //internal counter of score
     private static int _gryffScoreInt;
     private static int _slythScoreInt;
@@ -29,19 +30,14 @@ public class ScoreManager : MonoBehaviour
     {
         //get the text objects that show the score
         //this is so stupid but the only way to keep this all static
-        Text[] textComps = new Text[2];
+        Text[] textComps = new Text[4];
         textComps = GetComponentsInChildren<Text>();
-        if (textComps[0].name.Equals("GScore"))
+        foreach (var text in textComps)
         {
-            gryffScore = textComps[0];
-            slythScore = textComps[1];
+            if (text.name.Equals("GScore")) gryffScore = text;
+            else if (text.name.Equals("SScore")) slythScore = text;
         }
-        else
-        {
-            slythScore = textComps[0];
-            gryffScore = textComps[1];
-        }
-       
+     
         
         _gryffScoreInt = 0;
         _slythScoreInt = 0;

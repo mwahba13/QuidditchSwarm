@@ -16,5 +16,5 @@ MonoBehaviour:
   maxVelocity: {x: 16, y: 2}
   aggression: {x: 30, y: 7}
   maxExhaustion: {x: 50, y: 15}
-  bruiserLevel: {x: 50, y: 25}
-  bruiserWeighting: 0.5
+  bruiserLevel: {x: 100, y: 25}
+  bruiserWeighting: 1

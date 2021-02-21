@@ -46,7 +46,7 @@ public class SpawnManager : MonoBehaviour
         {
 
             GameObject newObj = Instantiate<GameObject>(newPlayer, new Vector3(spawnTrans.position.x + i,
-               0, spawnTrans.position.z), Quaternion.identity);
+               0, 0), Quaternion.identity);
 
             PlayerBase newBase = null;
             newObj.TryGetComponent<PlayerBase>(out newBase); 

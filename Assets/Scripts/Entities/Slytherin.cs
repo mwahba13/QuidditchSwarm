@@ -26,7 +26,7 @@ public class Slytherin : PlayerBase
     
     }
 
-
+    //todo team traits
     public override Vector3 TeamSpecificSeperation(Collider[] neighbours)
     {
         Vector3 newVec = Vector3.zero;
@@ -77,8 +77,13 @@ public class Slytherin : PlayerBase
         }
 
         else if (other.gameObject.CompareTag("Environment"))
+        {
             TransitionState(PlayerState.Unconscious);
+        }
         
+        else if (other.gameObject.CompareTag("Boundary"))
+            _rb.AddForce(-other.gameObject.transform.position);
+
         
         
     }

@@ -11,18 +11,11 @@ namespace ScriptableObjs
         [Tooltip("How many seconds before players exhaustion ticks")]
         public int exhastionTickFreq;
 
-        [Tooltip("The maximum amount of exhaustion that can be subtracted from a player on a tick")]
-        public int maxExhaustionDepletion;
-
-        [Tooltip("Amount of exhaustion that can be regained on a tick")]
-        public float exhaustRegainValue;
-        
-        [Tooltip("If agent's currentSpeed/MaxSpeed ratio is above this threshold, it will exhaust")]
-        public float exhaustThreshold;
-
         [Tooltip("Amount of time that player remains inactive when unconscious.")]
         public float inactiveTime;
-        
+
+        [Tooltip("Maximum amount an agent will slowdown when close to exhaustion.")]
+        public float exhastSlowdownWeight;
         
         [Header("Boid Values")]
         
@@ -61,5 +54,10 @@ namespace ScriptableObjs
         [Tooltip("Shows final calculated velocity - White")]
         public bool showAgentVelocity;
 
+        [Tooltip("Shows current exhaustion and max exhaustion.")]
+        public bool showExhaustValues;
+
+        [Tooltip("Shows current speed and max speed")]
+        public bool showSpeedValues;
     }
 }

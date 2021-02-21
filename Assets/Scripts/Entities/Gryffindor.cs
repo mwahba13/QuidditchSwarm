@@ -25,7 +25,7 @@ public class Gryffindor : PlayerBase
 
     }
 
-
+    //TODO:TEAM TRAITS X2
     public override Vector3 TeamSpecificSeperation(Collider[] neighbours)
     {
         Vector3 newVec = Vector3.zero;
@@ -41,6 +41,8 @@ public class Gryffindor : PlayerBase
             {
                 
             }
+            if(playerConstants.showNeighbourLineTraces)
+                Debug.DrawLine(transform.position,neigh.transform.position,Color.magenta,duration:2.0f);
             
         }
         

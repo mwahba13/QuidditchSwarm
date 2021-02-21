@@ -12,19 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca02eab7da440478f26dd42b5ecccdf, type: 3}
   m_Name: AgentSettings
   m_EditorClassIdentifier: 
-  exhastionTickFreq: 5
-  maxExhaustionDepletion: 10
-  exhaustRegainValue: 10
-  exhaustThreshold: 0.5
+  exhastionTickFreq: 1
   inactiveTime: 3
+  exhastSlowdownWeight: 1
   neighbourDetctionRadius: 3
   neighbourAvoidanceWeight: 0.5
-  snitchFollowWeight: 0.75
+  snitchFollowWeight: 1
   environmentAvoidanceWeight: 1
   environmentAvoidanceRadius: 20
   speedTuningValue: 4
   maxSteeringForce: 10
-  showNeighbourLineTraces: 1
-  showVectorTowardSnitch: 1
-  showSeperationVector: 1
+  showNeighbourLineTraces: 0
+  showVectorTowardSnitch: 0
+  showSeperationVector: 0
   showAgentVelocity: 1
+  showExhaustValues: 0
+  showSpeedValues: 0

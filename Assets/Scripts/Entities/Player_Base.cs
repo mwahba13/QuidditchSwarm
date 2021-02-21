@@ -97,6 +97,7 @@ public abstract class PlayerBase : MonoBehaviour
     //*SEPERATION NEEDS WORK
     //this function only changes direction
     //Some of this code adapted from Omar Addam (https://github.com/omaddam/Boids-Simulation)
+    //TODO: fix exhaustion
     private void _generalBoidBehavior()
     {
         Vector3 accel = new Vector3();
@@ -122,8 +123,11 @@ public abstract class PlayerBase : MonoBehaviour
         //avoid environemnt
         accel += SpeedExhaustReg.NormalizeSteeringForce(AvoidCollisions(), playerConstants.maxSteeringForce)
                  * playerConstants.environmentAvoidanceWeight;
-
         
+        //adjust speed based on exhaustion
+        
+
+
         //create new velocity based on calculated acceleration
         Vector3 newVel = _rb.velocity;
         newVel += accel * Time.deltaTime;
@@ -134,14 +138,15 @@ public abstract class PlayerBase : MonoBehaviour
         //apply velocity
         _rb.velocity = newVel;
         transform.forward = _rb.velocity.normalized;
-
+        
+        ExhaustionSpeedReg();
 
     }
 
     //STATE FUNCTIONS//
     public void ConsciousState() 
     {
-        //handle exhaustion lovic
+
         _handleExhaustionTick();
         _generalBoidBehavior();
         
@@ -149,7 +154,7 @@ public abstract class PlayerBase : MonoBehaviour
 
     public void UnconsciousState()
     {
-        if (_rb.velocity.y > -0.5f && _rb.velocity.y <= 0.5f)
+        if(_rb.velocity.y < .5 && _rb.velocity.y > -0.5)
             TransitionState(PlayerState.Waiting);
 
     }
@@ -163,7 +168,9 @@ public abstract class PlayerBase : MonoBehaviour
             TransitionState(PlayerState.Conscious);
         }
     }
-
+    
+    
+    //TODO: fix slytherin respawn bug
     public void TransitionState(PlayerState newState)
     {
         //conscious -> unconscious
@@ -178,7 +185,11 @@ public abstract class PlayerBase : MonoBehaviour
         //unconscious -> waiting
         else if (state.Equals(PlayerState.Unconscious) && newState.Equals(PlayerState.Waiting))
         {
-            transform.SetPositionAndRotation(_spawnTransform.position,Quaternion.identity);
+            //_rb.useGravity = false;
+            Transform spawnTrans = _spawnTransform;
+            spawnTrans.position.Set(spawnTrans.position.x + Random.Range(-10.0f,10.0f),
+                spawnTrans.position.y,spawnTrans.position.z);
+            transform.SetPositionAndRotation(spawnTrans.position, Quaternion.identity);
             _waitingTimer = 0;
         }
         
@@ -203,14 +214,35 @@ public abstract class PlayerBase : MonoBehaviour
             //calculate new exhaust
             currentExhaust = SpeedExhaustReg.TickExhaust(currentExhaust, _rb.velocity.magnitude,
                 maxVelocity,playerConstants);
-            
-            
-            if(currentExhaust <= 0)
-                //setState(PlayerState.Unconscious);
 
-                _exhaustTimer = 0;
+            Mathf.Clamp(currentExhaust, 0.0f, maxExhaust);
+
+            if (currentExhaust >= maxExhaust)
+            {
+                TransitionState(PlayerState.Unconscious);
+            }
+            
+            _exhaustTimer = 0;
+
         }
     }
+
+    //Calculates an upper limit on our players speed based on exhaustion
+    private void ExhaustionSpeedReg()
+    {
+        
+        //if we are arbitrarily close to exhaustion
+        if ((maxExhaust - currentExhaust) <= 20)
+        {
+            Debug.Log("Close to exhaust");
+            _rb.velocity = _rb.velocity * 0.95f;
+        }
+
+        
+
+
+    }
+    
     private Vector3 AvoidCollisions()
     {
         Vector3 output = Vector3.zero;
