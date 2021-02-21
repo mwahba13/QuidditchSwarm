@@ -10,7 +10,7 @@ Players on both teams have stats that can be adjusted to see how their behaviour
 
 Controls
 --------
-W,A,S,D - Move Camera Forward, Backwards,Left, Right
-Q,E, - Rotate Camera
-CTRL - Move Camera Down
-Space - Move Camera Up
+W,A,S,D - Move Camera Forward, Backwards,Left, Right \n
+Q,E, - Rotate Camera \n
+CTRL - Move Camera Down \n
+Space - Move Camera Up \n
