@@ -16,3 +16,5 @@ MonoBehaviour:
   maxVelocity: {x: 18, y: 2}
   aggression: {x: 22, y: 3}
   maxExhaustion: {x: 65, y: 13}
+  crunkness: {x: 100, y: 25}
+  crunknessWeighting: 0

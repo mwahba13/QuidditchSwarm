@@ -18,3 +18,5 @@ MonoBehaviour:
   maxExhaustion: {x: 50, y: 15}
   bruiserLevel: {x: 100, y: 25}
   bruiserWeighting: 1
+  bruiserBludgeonRadius: 10
+  showBruiserVector: 1

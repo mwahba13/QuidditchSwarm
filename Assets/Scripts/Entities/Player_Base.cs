@@ -97,7 +97,6 @@ public abstract class PlayerBase : MonoBehaviour
     //*SEPERATION NEEDS WORK
     //this function only changes direction
     //Some of this code adapted from Omar Addam (https://github.com/omaddam/Boids-Simulation)
-    //TODO: fix exhaustion
     private void _generalBoidBehavior()
     {
         Vector3 accel = new Vector3();
@@ -116,7 +115,7 @@ public abstract class PlayerBase : MonoBehaviour
         
         
         //add force away from neighbours and environment - seperation
-        Collider[] neighbours = Physics.OverlapSphere(transform.position, playerConstants.neighbourDetctionRadius);
+        Collider[] neighbours = Physics.OverlapSphere(transform.position, playerConstants.neighbourDetectionRadius);
         if (neighbours.Length > 0)
             accel += TeamSpecificSeperation(neighbours);
 
@@ -131,8 +130,9 @@ public abstract class PlayerBase : MonoBehaviour
             tempMaxVel = maxVelocity * Random.Range(0.3f,0.8f);
         }
             
-
-
+        //add force based on team-specific traits (i.e. crunkness)
+        accel += TeamSpecificBehavior();
+        
         //create new velocity based on calculated acceleration
         Vector3 newVel = _rb.velocity;
         newVel += accel * Time.deltaTime;
@@ -176,7 +176,6 @@ public abstract class PlayerBase : MonoBehaviour
     }
     
     
-    //TODO: fix slytherin respawn bug
     public void TransitionState(PlayerState newState)
     {
         //conscious -> unconscious
@@ -281,7 +280,9 @@ public abstract class PlayerBase : MonoBehaviour
 
 
     public abstract Vector3 TeamSpecificSeperation(Collider[] neighbours);
-    
+
+    //called every tick during conscious state
+    public abstract Vector3 TeamSpecificBehavior();
     
     //UTILITILES//
     public static void ResolveCollision(PlayerBase playerOne, PlayerBase playerTwo)

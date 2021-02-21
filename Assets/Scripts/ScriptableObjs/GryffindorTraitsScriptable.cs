@@ -15,7 +15,20 @@ namespace ScriptableObjs
 
         public Vector2 maxExhaustion;
 
-        //[Header("Gryffindor Traits (Mean, STD)")]
+        [Header("Gryffindor Traits (Mean, STD)")] 
+        
+        [Tooltip("Uh Oh, Harry's been hitting the skooma pipe hard these days...")]
+        public Vector2 crunkness;
 
+        [Tooltip("How potent that kryptachronicrackalck is.")]
+        public float crunkPower;
+
+        [Tooltip("How hard that dankness supreme is hittin' each player")]
+        public float crunknessWeighting;
+
+
+        [Header("Debug")] 
+        [Tooltip("Shows crunkness vector in yellow")]
+        public bool showCrunknessVector;
     }
 }

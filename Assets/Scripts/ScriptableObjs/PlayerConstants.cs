@@ -20,8 +20,11 @@ namespace ScriptableObjs
         [Header("Boid Values")]
         
         [Tooltip("Radius that agents will detect neighbours within")]
-        public float neighbourDetctionRadius;
+        public float neighbourDetectionRadius;
 
+        [Tooltip("Radius that agents will actually avoid neighbours")]
+        public float neighbourAvoidanceRadius;
+        
         [Tooltip("Weighting for how hard an agent should try to avoid neighbour")]
         public float neighbourAvoidanceWeight;
 

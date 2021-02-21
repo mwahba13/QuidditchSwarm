@@ -22,5 +22,13 @@ namespace ScriptableObjs
 
         [Tooltip("Weighting of a Slytherin's bruiser level. 0 - they ignore gryffindors, 1- they chase gryffindors like junkyard dawgs")]
         public float bruiserWeighting;
+
+        [Tooltip("Radius within which slytherins will chase down gryffindors")]
+        public float bruiserBludgeonRadius;
+
+        [Header("Debug")] 
+        
+        public bool showBruiserVector;
+
     }
 }

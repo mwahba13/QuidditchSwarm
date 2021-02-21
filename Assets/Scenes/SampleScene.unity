@@ -5433,8 +5433,8 @@ MonoBehaviour:
     type: 3}
   gryffindorSpawn: {fileID: 1341393619}
   slytherinSpawn: {fileID: 1398641097}
-  numGryffinToSpawn: 0
-  numSlytherinToSpawn: 0
+  numGryffinToSpawn: 5
+  numSlytherinToSpawn: 10
 --- !u!114 &1268055609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8138,7 +8138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1857261508
 MonoBehaviour:
   m_ObjectHideFlags: 0

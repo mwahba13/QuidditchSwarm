@@ -7,7 +7,7 @@ public class Slytherin : PlayerBase
 {
 
     private float _bruiserLevel;
-
+    
     //the current Gryffindor player this agent is trying to chase down
     private GameObject _currentTarget;
     
@@ -22,8 +22,16 @@ public class Slytherin : PlayerBase
         maxExhaust = GaussHouse.GenerateGaussianFloat(slythTraits.maxExhaustion.x,slythTraits.maxExhaustion.y);
         
         //slytherin specific traits
-        _bruiserLevel = GaussHouse.GenerateGaussianFloat(slythTraits.bruiserLevel.x, slythTraits.bruiserLevel.y);
+        _bruiserLevel = CalculateBruiserLevel();
+        
+        
+    }
     
+    public override Vector3 TeamSpecificBehavior()
+    {
+        Vector3 newVec = Vector3.zero;
+
+        return newVec;
     }
 
     //todo team traits
@@ -33,18 +41,37 @@ public class Slytherin : PlayerBase
 
         foreach (Collider neigh in neighbours)
         {
+            
             //avoid teammates, ground and environment
             if (neigh.gameObject.CompareTag("Slytherin") || neigh.gameObject.CompareTag("Environment")
                                                          || neigh.gameObject.CompareTag("Ground"))
-                newVec += SpeedExhaustReg.NormalizeSteeringForce((transform.position - neigh.gameObject.transform.position),
-                              playerConstants.maxSteeringForce) * playerConstants.neighbourAvoidanceWeight;
+            {
+                if ((neigh.transform.position - transform.position).magnitude <=
+                    playerConstants.neighbourAvoidanceRadius)
+                {
+                    newVec += SpeedExhaustReg.NormalizeSteeringForce((transform.position - neigh.gameObject.transform.position),
+                        playerConstants.maxSteeringForce) * playerConstants.neighbourAvoidanceWeight;
+                }
+                
+            }
 
+            
+            
             else if (neigh.gameObject.CompareTag("Gryffindor"))
             {
-                //will try to ram gryffindor depending how much of a brute this agent is
-                newVec += SpeedExhaustReg.NormalizeSteeringForce(
-                    (neigh.gameObject.transform.position - transform.position), playerConstants.maxSteeringForce)
-                          *CalculateBruiserRate();
+                if ((neigh.transform.position - transform.position).magnitude <= slythTraits.bruiserBludgeonRadius)
+                    //will try to ram gryffindor depending how much of a brute this agent is
+                {
+                    float tempBruiserWeight = _bruiserLevel * slythTraits.bruiserWeighting;
+                
+                    newVec += SpeedExhaustReg.NormalizeSteeringForce(
+                                  (neigh.gameObject.transform.position - transform.position), playerConstants.maxSteeringForce)
+                              *tempBruiserWeight;
+                }
+                
+                if(slythTraits.showBruiserVector)
+                    Debug.DrawRay(this.transform.position,neigh.gameObject.transform.position*_bruiserLevel
+                    ,Color.black);
           
             }
             
@@ -90,9 +117,11 @@ public class Slytherin : PlayerBase
 
 
     //calculates weighting which dictates how hard this agent willl chase down gryffindors
-    private float CalculateBruiserRate()
+    private float CalculateBruiserLevel()
     {
-        return ((_bruiserLevel + aggro) / 100) * slythTraits.bruiserWeighting;
+        float bruiserLevel = GaussHouse.GenerateGaussianFloat(slythTraits.bruiserLevel.x, slythTraits.bruiserLevel.y);
+        
+        return ((bruiserLevel + aggro) / 100);
     }
 }
 

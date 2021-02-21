@@ -15,7 +15,8 @@ MonoBehaviour:
   exhastionTickFreq: 1
   inactiveTime: 3
   exhastSlowdownWeight: 1
-  neighbourDetctionRadius: 3
+  neighbourDetectionRadius: 20
+  neighbourAvoidanceRadius: 5
   neighbourAvoidanceWeight: 0.5
   snitchFollowWeight: 1
   environmentAvoidanceWeight: 1

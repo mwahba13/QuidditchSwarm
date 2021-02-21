@@ -52,15 +52,17 @@ public class ScoreManager : MonoBehaviour
         int scoreInc = 1;
         if (team == _lastScoringTeam)
             scoreInc++;
-
+        
         switch (team)
         {
             case PlayerBase.Team.Gryffindor:
                 _gryffScoreInt += scoreInc;
+                _lastScoringTeam = PlayerBase.Team.Gryffindor;
                 break;
             
             case PlayerBase.Team.Slytherin:
                 _slythScoreInt += scoreInc;
+                _lastScoringTeam = PlayerBase.Team.Slytherin;
                 break;
             
             default:
