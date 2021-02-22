@@ -1,6 +1,7 @@
 # QuidditichSwarm
 Quidditch is a game for wizards where two teams fly on broomsticks to try and catch a golden snitch while dodging bludgers, quafflers, wafflers, etc.
 Who am I kidding? You don't really care about that do you?
+<iframe src="https://giphy.com/embed/xT8qBjW8P17mTeYYow" width="480" height="233" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/chuber-harry-potter-quidditch-snitch-xT8qBjW8P17mTeYYow">via GIPHY</a></p>
 
 This project is a simplified implementation of Quidditch in Unity using a multi-agent swarm paradigm to simulate the two teams.
 
@@ -15,13 +16,16 @@ Each player has an exhaustion level that will increase as they fly around. If th
 
 If a player is close to exhaustion, they will slow down to try and lower their exhaustion levels. This process is reliant on random number generation so sometimes players will run themselves until exhaustion, other times they will slow down and prevent themselves from passing out.
 
+### Tackling
+When two players on opposing teams come into contact with each other
+
 ## Instructions
 1. Download or clone repository
 2. Open in Unity
 
 ## Controls
 W,A,S,D - Move Camera Forward, Backwards, Left, Right <br />
-Q,E, - Rotate Camera <br />
+Q,E - Rotate Camera <br />
 CTRL - Move Camera Down <br />
 Space - Move Camera Up <br />
 
@@ -29,13 +33,20 @@ Space - Move Camera Up <br />
 The stats of players on both teams are randomly determined based on the values entered at the main menu. You can enter in the mean value and std, and the game will automatically generate random parameters based on those input values.
 
 ### Traits Common to Both Teams.
-Weight - How heavy a player is. Will affect their momentum and speed.
-Max Velocity - Pretty self-explanatory. The speed limit for each player.
-Aggression - This value dictates the likelihood a player will become unconscious when they come into contact with an opposing player.
-Max Exhaustion - The maximum amount of exhaustion this player can experience before becoming unconscious.
+**Weight** - How heavy a player is. Will affect their momentum and speed.
+**Max Velocity** - Pretty self-explanatory. The speed limit for each player.
+**Aggression** - This value dictates the likelihood a player will become unconscious when they come into contact with an opposing player.
+**Max Exhaustion** - The maximum amount of exhaustion this player can experience before becoming unconscious.
+
+### Gryffindor Traits
+**Crunkness** - Harry's been hitting the skooma pipe again. This trait makes the players all wibbly-wobbly like.
+
+### Slyther Traits
+**Bruiser** - Slytherins are generally not nice. This trait causes players to try and ram the opposing players into submission ( ͡° ͜ʖ ͡°)
 
 
 ## Ingame Debug Menu
+Press __ to access the in-game debug menu.
 
 
 
