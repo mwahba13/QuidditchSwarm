@@ -19,10 +19,10 @@ If a player is close to exhaustion, they will slow down to try and lower their e
 
 ### Tackling
 When two players on opposing teams come into contact with each other, a calculation determines which player becomes unconscious and which player carries on. The calculation is resolved as such:
-'''
+```
 Player1Value = player1.Aggressiveness* (rng.NextDouble()* (1.2 - 0.8) *(1 - (player1.exhaustion / player1.maxExhaustion))
 Player2Value = player2.Aggressiveness* (rng.NextDouble()* (1.2 - 0.8) *(1 - (player2.exhaustion / player2.maxExhaustion))
-'''
+```
 The player with the lower value becomes unconscious.
 
 ## Instructions
@@ -55,6 +55,8 @@ The stats of players on both teams are randomly determined based on the values e
 Press __ to access the in-game debug menu.
 
 
-
+# Credits
+All code is written by me (Michael Wahba) unless otherwise specified.
+Character models also created by me.
 
 
