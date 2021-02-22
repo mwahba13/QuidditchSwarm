@@ -18,7 +18,12 @@ Each player has an exhaustion level that will increase as they fly around. If th
 If a player is close to exhaustion, they will slow down to try and lower their exhaustion levels. This process is reliant on random number generation so sometimes players will run themselves until exhaustion, other times they will slow down and prevent themselves from passing out.
 
 ### Tackling
-When two players on opposing teams come into contact with each other
+When two players on opposing teams come into contact with each other, a calculation determines which player becomes unconscious and which player carries on. The calculation is resolved as such:
+'''
+Player1Value = player1.Aggressiveness* (rng.NextDouble()* (1.2 - 0.8) *(1 - (player1.exhaustion / player1.maxExhaustion))
+Player2Value = player2.Aggressiveness* (rng.NextDouble()* (1.2 - 0.8) *(1 - (player2.exhaustion / player2.maxExhaustion))
+'''
+The player with the lower value becomes unconscious.
 
 ## Instructions
 1. Download or clone repository
