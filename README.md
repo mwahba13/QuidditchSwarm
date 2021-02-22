@@ -40,8 +40,11 @@ The stats of players on both teams are randomly determined based on the values e
 
 ### Traits Common to Both Teams.
 **Weight** - How heavy a player is. Will affect their momentum and speed.
+
 **Max Velocity** - Pretty self-explanatory. The speed limit for each player.
+
 **Aggression** - This value dictates the likelihood a player will become unconscious when they come into contact with an opposing player.
+
 **Max Exhaustion** - The maximum amount of exhaustion this player can experience before becoming unconscious.
 
 ### Gryffindor Traits
