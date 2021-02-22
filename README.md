@@ -1,8 +1,7 @@
 # QuidditichSwarm
 Quidditch is a game for wizards where two teams fly on broomsticks to try and catch a golden snitch while dodging bludgers, quafflers, wafflers, etc.
 Who am I kidding? You don't really care about that do you?
-<iframe src="https://giphy.com/embed/xT8qBjW8P17mTeYYow" width="480" height="233" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/chuber-harry-potter-quidditch-snitch-xT8qBjW8P17mTeYYow">via GIPHY</a></p>
-
+[!Snitches get Stitches](https://media.giphy.com/media/xT8qBjW8P17mTeYYow/source.gif)
 This project is a simplified implementation of Quidditch in Unity using a multi-agent swarm paradigm to simulate the two teams.
 
 Each player has has a set number of forces propelling them through the world. One force leads them towards the snitch, another pushes them away from colliding with teammates. The forces can be visualized using the in-game debug menu. The goal of the game is to try and catch the snitch. Each time a member of a team catches a snitch, their team will score a point. If a team successively captures the snitch before the other team scores a point, then that team will gain a bonus point. The game ends when a team reaches a score of 100.
