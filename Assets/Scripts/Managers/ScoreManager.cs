@@ -70,6 +70,11 @@ public class ScoreManager : MonoBehaviour
                 
         }
         
+        if(_gryffScoreInt >= 100)
+            GameManager.GameOver(PlayerBase.Team.Gryffindor);
+        if(_slythScoreInt >= 100)
+            GameManager.GameOver(PlayerBase.Team.Slytherin);
+        
         if(!_boardIsHidden)
             UpdateInGameUI();
 

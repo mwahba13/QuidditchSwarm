@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f9f25d19fb4a999d2b2a4fb19a1c2e, type: 3}
   m_Name: GryffindorTraits
   m_EditorClassIdentifier: Assembly-CSharp:ScriptableObjs:GryffindorTraits
-  NumberOfPlayers: 2
+  NumberOfPlayers: 5
   weight: {x: 85, y: 12}
   maxVelocity: {x: 18, y: 2}
   aggression: {x: 22, y: 3}
   maxExhaustion: {x: 65, y: 13}
   crunkness: {x: 100, y: 25}
-  crunkPower: 5
+  crunkPower: 6
   crunknessWeighting: 0
+  buddySystemWeighting: 0
   showCrunknessVector: 0
+  showBuddyVector: 0

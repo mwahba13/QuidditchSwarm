@@ -1,16 +1,19 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using System.Numerics;
 using System.Runtime.Serialization;
 using ScriptableObjs;
 using Random = System.Random;
+using Vector3 = UnityEngine.Vector3;
 
 public class Gryffindor : PlayerBase
 {
 
     public GryffindorTraitsScriptable gryffTraits;
 
-    private float _crunknessLevel;
+    [SerializeField]
+    private GameObject _nearestTeammate;
     
     //INIT//
     public override void GenerateTraitValues()
@@ -21,11 +24,9 @@ public class Gryffindor : PlayerBase
         maxExhaust = GaussHouse.GenerateGaussianFloat(gryffTraits.maxExhaustion.x,gryffTraits.maxExhaustion.y);
         
         //gryffindor specific traits
-        _crunknessLevel = CalculateCrunkLevel();
 
     }
 
-    //todo: team specific tick behaviors
     
     public override Vector3 TeamSpecificBehavior()
     {
@@ -34,7 +35,13 @@ public class Gryffindor : PlayerBase
         //calculate crunkness vector
         newVec += SpeedExhaustReg.NormalizeSteeringForce(CalculateCrunkVector(),
             playerConstants.maxSteeringForce)*gryffTraits.crunknessWeighting;
-
+        
+        newVec += SpeedExhaustReg.NormalizeSteeringForce((_nearestTeammate.gameObject.transform.position - transform.position),
+                      playerConstants.maxSteeringForce)
+                  * gryffTraits.buddySystemWeighting;
+        
+        if(gryffTraits.showBuddyVector)
+            Debug.DrawRay(transform.position,_nearestTeammate.gameObject.transform.position,Color.cyan);
 
         return newVec;
     }
@@ -48,7 +55,7 @@ public class Gryffindor : PlayerBase
         foreach (Collider neigh in neighbours)
         {
             //avoid teammates, 
-            if (neigh.gameObject.CompareTag("Gryffindor") || neigh.gameObject.CompareTag("Environment")
+            if ( neigh.gameObject.CompareTag("Environment")
                                                           || neigh.gameObject.CompareTag("Ground"))
             {
                 if ((transform.position - neigh.transform.position).magnitude <=
@@ -57,16 +64,42 @@ public class Gryffindor : PlayerBase
                     newVec += SpeedExhaustReg.NormalizeSteeringForce((transform.position - neigh.gameObject.transform.position)
                         ,playerConstants.maxSteeringForce)* playerConstants.neighbourAvoidanceWeight;
                 }
-                if(playerConstants.showNeighbourLineTraces)
-                    Debug.DrawLine(transform.position,neigh.transform.position,Color.magenta,duration:2.0f);
+
             }
-                
-            /*
-            else if (neigh.gameObject.CompareTag("Slytherin"))
+
+            if (neigh.gameObject.CompareTag("Gryffindor"))
             {
+                Vector3 neighbourTrans = neigh.transform.position;
                 
+                
+                //seperation
+                if ((transform.position - neighbourTrans).magnitude <=
+                    playerConstants.neighbourAvoidanceRadius)
+                {
+                    newVec += SpeedExhaustReg.NormalizeSteeringForce((transform.position - neighbourTrans)
+                        ,playerConstants.maxSteeringForce)* playerConstants.neighbourAvoidanceWeight;
+                }
+
+                
+                if (!_nearestTeammate)
+                    _nearestTeammate = neigh.gameObject;
+                
+                Vector3 nearestTeammateTrans = _nearestTeammate.transform.position;
+
+                if ((neighbourTrans - nearestTeammateTrans).magnitude <
+                    (transform.position - nearestTeammateTrans).magnitude)
+                {
+                    if ((transform.position - neighbourTrans).magnitude > 1.0f)
+                        _nearestTeammate = neigh.gameObject;
+                }
+
+                  
+
+                //cohesion
+
+
             }
-            */
+
 
         }
        

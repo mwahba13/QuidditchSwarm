@@ -11,6 +11,7 @@ TagManager:
   - Slytherin
   - Ground
   - Environment
+  - WinScreen
   layers:
   - Default
   - TransparentFX

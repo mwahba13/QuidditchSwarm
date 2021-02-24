@@ -14,6 +14,8 @@ namespace System
         //gryffindor
         public InputField gryffCrunkField;
         public Toggle gryffCrunkVectorToggle;
+        public InputField gryffBuddyField;
+        public Toggle gryffBuddyToggle;
 
         //slytherin
         public InputField slythBruiseField;
@@ -28,28 +30,89 @@ namespace System
         public InputField neighbourAvoidField;
         
         //snitch settings
-        public InputField snitchMinVel;
+        public InputField snitchAccel;
         public InputField snitchMaxVel;
 
         public Toggle environmentAvoidVector;
         public Toggle randomVector;
         public Toggle showDirectionVector;
 
-        
-        //todo update UI to show current values
+
+        public void UpdateUIFields()
+        {
+            //gryff
+            gryffBuddyToggle.isOn = gryffTraits.showBuddyVector;
+            gryffCrunkVectorToggle.isOn = gryffTraits.showCrunknessVector;
+            
+            gryffCrunkField.text = gryffTraits.crunknessWeighting.ToString();
+            gryffBuddyField.text = gryffTraits.buddySystemWeighting.ToString();
+            
+            //slyth
+            slythBruiseField.text = slythTraits.bruiserWeighting.ToString();
+
+            slythBruiseVectorToggle.isOn = slythTraits.showBruiserVector;
+            
+            //agent traits
+            
+            snitchVector.isOn = agentTraits.showVectorTowardSnitch;
+            seperationVector.isOn = agentTraits.showSeperationVector;
+            agentVelocity.isOn = agentTraits.showAgentVelocity;
+
+            neighbourAvoidField.text = agentTraits.neighbourAvoidanceRadius.ToString();
+            snitchFollowField.text = agentTraits.snitchFollowWeight.ToString();
+            
+            //snitch traits
+            
+            environmentAvoidVector.isOn = snitchTraits.showEnvironmentAvoidVector;
+            showDirectionVector.isOn = snitchTraits.showDirectionVector;
+            randomVector.isOn = snitchTraits.showRandomVector;
+    
+            snitchAccel.text = snitchTraits.snitchSpeed.ToString();
+            snitchMaxVel.text = snitchTraits.maxVelocity.ToString();
+
+        }
+
+
+        public void ResetEverything()
+        {
+            environmentAvoidVector.isOn = false;
+            showDirectionVector.isOn = false;
+            randomVector.isOn = false;
+            UpdateAgentTraits();
+
+            snitchVector.isOn = false;
+            seperationVector.isOn = false;
+            agentVelocity.isOn = false;
+            UpdateSnitchTraits();
+
+            gryffBuddyToggle.isOn = false;
+            gryffCrunkVectorToggle.isOn = false;
+            UpdateAgentTraits();
+
+            slythBruiseVectorToggle.isOn = false;
+            UpdateSlythTraits();
+
+
+        }
         
         public void UpdateGryffTraits()
         {
             gryffTraits.crunknessWeighting = float.Parse(gryffCrunkField.text);
+            gryffTraits.buddySystemWeighting = float.Parse(gryffBuddyField.text);
+            gryffTraits.showBuddyVector = gryffBuddyToggle.isOn;
+            gryffTraits.showCrunknessVector = gryffCrunkVectorToggle.isOn;
+
+
         }
 
         public void UpdateSlythTraits()
         {
             slythTraits.bruiserWeighting = float.Parse(slythBruiseField.text);
+
+            slythTraits.showBruiserVector = slythBruiseVectorToggle.isOn;
         }
         
         
-    //TODO: change debug lines to linerenderer
         public void UpdateAgentTraits()
         {
             agentTraits.showVectorTowardSnitch = snitchVector.isOn;
@@ -66,9 +129,13 @@ namespace System
             snitchTraits.showDirectionVector = showDirectionVector.isOn;
             snitchTraits.showRandomVector = randomVector.isOn;
 
-            snitchTraits.minVelocity = float.Parse(snitchMinVel.text);
+            snitchTraits.snitchSpeed = float.Parse(snitchAccel.text);
             snitchTraits.maxVelocity = float.Parse(snitchMaxVel.text);
         }
+        
+        
+
+        
 
     }
 }

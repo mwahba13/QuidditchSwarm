@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Numerics;
 using ScriptableObjs;
 using UnityEngine.Serialization;
 using Quaternion = UnityEngine.Quaternion;
+using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
 
 [RequireComponent( typeof(Rigidbody))]
@@ -45,6 +47,7 @@ public abstract class PlayerBase : MonoBehaviour
     [SerializeField]
     protected GameObject _snitchObj;
 
+    protected Vector3 _agentVector;
     
 
     public PlayerConstants playerConstants;
@@ -143,8 +146,8 @@ public abstract class PlayerBase : MonoBehaviour
         //apply velocity
         _rb.velocity = newVel;
         transform.forward = _rb.velocity.normalized;
-        
 
+        _agentVector = newVel;
 
     }
 

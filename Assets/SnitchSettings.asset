@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directionTimer: 1
   maxSteeringForce: 50
-  maxVelocity: 10
-  minVelocity: 5
-  snitchSpeed: 0.5
+  maxVelocity: 50
+  minVelocity: 10
+  snitchSpeed: 1
   randomDirectionWeight: 0.5
   collisionRadiusDetection: 10
   environmentAvoidanceWeighting: 1
-  showEnvironmentAvoidVector: 1
-  showDirectionVector: 1
-  showRandomVector: 1
+  showEnvironmentAvoidVector: 0
+  showDirectionVector: 0
+  showRandomVector: 0

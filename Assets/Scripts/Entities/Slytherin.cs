@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using ScriptableObjs;
+using Random = UnityEngine.Random;
 
 public class Slytherin : PlayerBase
 {
@@ -30,6 +31,8 @@ public class Slytherin : PlayerBase
     public override Vector3 TeamSpecificBehavior()
     {
         Vector3 newVec = Vector3.zero;
+        
+        
 
         return newVec;
     }

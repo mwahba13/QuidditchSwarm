@@ -34,6 +34,9 @@ public class CameraController : MonoBehaviour
         
             if(Input.GetKey(KeyCode.Q))
                 transform.Rotate(Vector3.up,-50.0f*Time.deltaTime);
+            
+            if(Input.GetKey(KeyCode.Escape))
+                Application.Quit();
         }
 
         

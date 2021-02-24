@@ -70,38 +70,6 @@ public class Snitch : MonoBehaviour
 
         transform.forward = _rb.velocity.normalized;
 
-        /*
-        Vector3 accel = new Vector3();
-
-        _timer += Time.deltaTime;
-        if (_timer >= snitchSettings.directionTimer)
-        {
-
-            Vector3 randDir = (Random.onUnitSphere - transform.position) * snitchSettings.snitchSpeed;
-
-            accel += randDir;
-            accel += SpeedExhaustReg.NormalizeSteeringForce(randDir, snitchSettings.maxSteeringForce);
-            _timer = 0.0f;
-        }
-
-
-        //accel += SpeedExhaustReg.NormalizeSteeringForce(AvoidCollisions(), snitchSettings.maxSteeringForce)
-           // *snitchSettings.environmentAvoidanceWeighting;
-
-        Vector3 newVel = _rb.velocity;
-        newVel += accel * Time.deltaTime;
-    
-        //clamp velocity
-        newVel = newVel.normalized * Mathf.Clamp(newVel.magnitude, snitchSettings.minVelocity,
-            snitchSettings.maxVelocity);
-
-        _rb.velocity = newVel;
-
-        if (snitchSettings.showDirectionVector)
-            Debug.DrawRay(transform.position,newVel,Color.cyan);
-    
-        transform.forward = _rb.velocity.normalized;
-        */
 
 
     }
