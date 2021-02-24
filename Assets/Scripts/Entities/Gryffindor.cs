@@ -8,7 +8,7 @@ using Random = System.Random;
 public class Gryffindor : PlayerBase
 {
 
-    public GryffindorTraits gryffTraits;
+    public GryffindorTraitsScriptable gryffTraits;
 
     private float _crunknessLevel;
     

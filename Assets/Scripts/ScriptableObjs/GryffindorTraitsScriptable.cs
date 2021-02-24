@@ -1,10 +1,15 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace ScriptableObjs
 {
     [CreateAssetMenu(fileName = "GryffindorTraitsScriptable", menuName = "GryffindorTraitsScriptable", order = 0)]
-    public class GryffindorTraits : ScriptableObject
+    public class GryffindorTraitsScriptable : ScriptableObject
     {
+
+        public int NumberOfPlayers;
+
+       
         [Header("Traits (Mean,STD)")] 
         
         public Vector2 weight;
@@ -30,5 +35,10 @@ namespace ScriptableObjs
         [Header("Debug")] 
         [Tooltip("Shows crunkness vector in yellow")]
         public bool showCrunknessVector;
+
+        
+        
+
+
     }
 }

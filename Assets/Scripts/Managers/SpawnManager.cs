@@ -22,11 +22,11 @@ public class SpawnManager : MonoBehaviour
     public void Start()
     {
         snitchObj = GameObject.FindWithTag("Snitch");
-        SpawnTeam(numGryffinToSpawn, true,snitchObj);
-        SpawnTeam(numSlytherinToSpawn,false,snitchObj);
+        //SpawnTeam(numGryffinToSpawn, true,snitchObj);
+        //SpawnTeam(numSlytherinToSpawn,false,snitchObj);
     }
 
-    public void SpawnTeam(int numToSpawn, bool isGryffindor, GameObject snitchObj)
+    public void SpawnTeam(int numToSpawn, bool isGryffindor)
     {
         GameObject newPlayer = null;
         if (isGryffindor)
@@ -46,7 +46,7 @@ public class SpawnManager : MonoBehaviour
         {
 
             GameObject newObj = Instantiate<GameObject>(newPlayer, new Vector3(spawnTrans.position.x + i,
-               0, 0), Quaternion.identity);
+               i, 0), Quaternion.identity);
 
             PlayerBase newBase = null;
             newObj.TryGetComponent<PlayerBase>(out newBase); 

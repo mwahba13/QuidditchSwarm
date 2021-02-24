@@ -57,10 +57,5 @@ namespace ScriptableObjs
         [Tooltip("Shows final calculated velocity - White")]
         public bool showAgentVelocity;
 
-        [Tooltip("Shows current exhaustion and max exhaustion.")]
-        public bool showExhaustValues;
-
-        [Tooltip("Shows current speed and max speed")]
-        public bool showSpeedValues;
     }
 }

@@ -1,29 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e2e35bed-f8cd-453a-b5d2-45a83ae45dbe" name="Default Changelist" comment="Player exhaustion and speed management is good">
+    <list default="true" id="e2e35bed-f8cd-453a-b5d2-45a83ae45dbe" name="Default Changelist" comment="Gryffindor Crunkess factor is dope.">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/DebugMenu.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/DebugMenu.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.QuidditchForNubs/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QuidditchForNubs/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.QuidditchForNubs/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QuidditchForNubs/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.QuidditchForNubs/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QuidditchForNubs/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/AgentSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AgentSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GryffindorTraits.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GryffindorTraits.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Snitch.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Snitch.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Green.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Green.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Red.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Red.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entities/Gryffindor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entities/Gryffindor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entities/Player_Base.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entities/Player_Base.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entities/Slytherin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entities/Slytherin.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/ScoreManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/ScoreManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/SpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/SpawnManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/GryffindorTraitsScriptable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/GryffindorTraitsScriptable.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/PlayerConstants.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/PlayerConstants.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/SlytherinTraitsScriptable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/SlytherinTraitsScriptable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SlytherinTraits.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SlytherinTraits.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/CameraController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/MainMenu.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/SnitchSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SnitchSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ArtifactDB" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ArtifactDB" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ShaderCache/EditorEncounteredVariants" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ShaderCache/EditorEncounteredVariants" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/SourceAssetDB" beforeDir="false" afterPath="$PROJECT_DIR$/Library/SourceAssetDB" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/StateCache/Hierarchy/18d97c-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/Hierarchy/18d97c-mainStage.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/StateCache/SceneView/644606-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/SceneView/644606-mainStage.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe0.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe1.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe1.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe2.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe2.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,17 +66,19 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Snitch/Snitch.cs" />
       <option value="$PROJECT_DIR$/Assets/CameraController.cs" />
       <option value="$PROJECT_DIR$/Assets/MainMenu.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Managers/SpawnManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Utilities/MainMenu.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Utilities/SpeedExhaustReg.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/PlayerConstants.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/SlytherinTraitsScriptable.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Player_Base.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Slytherin.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Managers/ScoreManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/GryffindorTraitsScriptable.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/SlytherinTraitsScriptable.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Utilities/CameraController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Managers/SpawnManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Utilities/MainMenu.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Gryffindor.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/GryffindorTraitsScriptable.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/PlayerConstants.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Utilities/DebugMenu.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1oFVIrbjITwIiPMQnksOEnL1VWi" />
@@ -146,7 +152,9 @@
       <workItem from="1613764725441" duration="72000" />
       <workItem from="1613769876489" duration="4661000" />
       <workItem from="1613926729925" duration="124000" />
-      <workItem from="1613937179447" duration="8113000" />
+      <workItem from="1613937179447" duration="11323000" />
+      <workItem from="1613977724018" duration="815000" />
+      <workItem from="1614127008785" duration="4593000" />
     </task>
     <task id="LOCAL-00001" summary="Exhaustion WIP">
       <created>1613926781152</created>
@@ -169,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613940314896</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Gryffindor Crunkess factor is dope.">
+      <created>1613950425819</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1613950425819</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,7 +208,8 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Exhaustion WIP" />
     <MESSAGE value="Player exhaustion and speed management is good" />
-    <option name="LAST_COMMIT_MESSAGE" value="Player exhaustion and speed management is good" />
+    <MESSAGE value="Gryffindor Crunkess factor is dope." />
+    <option name="LAST_COMMIT_MESSAGE" value="Gryffindor Crunkess factor is dope." />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

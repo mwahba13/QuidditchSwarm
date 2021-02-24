@@ -16,7 +16,7 @@ MonoBehaviour:
   maxSteeringForce: 50
   maxVelocity: 10
   minVelocity: 5
-  snitchSpeed: 2
+  snitchSpeed: 0.5
   randomDirectionWeight: 0.5
   collisionRadiusDetection: 10
   environmentAvoidanceWeighting: 1

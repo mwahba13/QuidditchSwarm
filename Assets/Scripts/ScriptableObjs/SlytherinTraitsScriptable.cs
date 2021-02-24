@@ -5,6 +5,9 @@ namespace ScriptableObjs
     [CreateAssetMenu(fileName = "SlytherinTraitsScriptable", menuName = "SlytherinTraitsScriptable", order = 0)]
     public class SlytherinTraitsScriptable : ScriptableObject
     {
+
+        public int NumberOfPlayers;
+        
         [Header("Common Traits (Mean, STD)")] 
         
         public Vector2 weight;
