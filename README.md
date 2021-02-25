@@ -59,7 +59,7 @@ The stats of players on both teams are randomly determined based on the values e
 **Buddy System** - Gryffindor's are like crips, they like to stick together.
 ![Buddy System Gif](GIFS/BuddySys.gif)
 
-**Buddy System** - Gryffindor's like to stick together...maybe a bit too much.
+
 
 ### Slyther Traits
 **Bruiser** - Slytherins are generally not nice. This trait causes players to try and ram the opposing players into submission ( ͡° ͜ʖ ͡°)
