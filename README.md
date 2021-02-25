@@ -56,7 +56,7 @@ The stats of players on both teams are randomly determined based on the values e
 
 ### Slyther Traits
 **Bruiser** - Slytherins are generally not nice. This trait causes players to try and ram the opposing players into submission ( ͡° ͜ʖ ͡°)
-![Bruiser Gif](GIFS/Bruiser.gif)
+![Bruiser Gif](GIFS/Bruiser1.gif)
 
 ## Ingame Debug Menu
 Press __ to access the in-game debug menu.
