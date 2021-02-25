@@ -7,7 +7,7 @@ Who am I kidding? You don't really care about that do you?
 This project is a simplified implementation of Quidditch in Unity using a multi-agent swarm paradigm to simulate the two teams.
 
 Each player has has a set number of forces propelling them through the world. One force leads them towards the snitch, another pushes them away from colliding with teammates. The forces can be visualized using the in-game debug menu. The goal of the game is to try and catch the snitch. Each time a member of a team catches a snitch, their team will score a point. If a team successively captures the snitch before the other team scores a point, then that team will gain a bonus point. The game ends when a team reaches a score of 100.
-![Big Swarm](GIFS/Big Swarm.gif
+![Big Swarm](GIFS/BigSwarm.gif
 
 ## Mechanics
 ### Agent States
