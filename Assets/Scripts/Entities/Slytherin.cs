@@ -74,7 +74,7 @@ public class Slytherin : PlayerBase
                 
                 if(slythTraits.showBruiserVector)
                     Debug.DrawRay(this.transform.position,neigh.gameObject.transform.position*_bruiserLevel
-                    ,Color.black);
+                    ,Color.yellow);
           
             }
             

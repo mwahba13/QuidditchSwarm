@@ -75,23 +75,29 @@ namespace System
 
         public void ResetEverything()
         {
+            //agent
             environmentAvoidVector.isOn = false;
             showDirectionVector.isOn = false;
             randomVector.isOn = false;
-            UpdateAgentTraits();
+            agentTraits.showAgentVelocity = false;
+            snitchTraits.showEnvironmentAvoidVector = false;
+            snitchTraits.showRandomVector = false;
+            snitchTraits.showDirectionVector = false;
 
             snitchVector.isOn = false;
             seperationVector.isOn = false;
             agentVelocity.isOn = false;
-            UpdateSnitchTraits();
+            agentTraits.showAgentVelocity = false;
+            agentTraits.showSeperationVector = false;
+            agentTraits.showVectorTowardSnitch = false;
 
             gryffBuddyToggle.isOn = false;
             gryffCrunkVectorToggle.isOn = false;
-            UpdateAgentTraits();
+            gryffTraits.showBuddyVector = false;
+            gryffTraits.showCrunknessVector = false;
 
             slythBruiseVectorToggle.isOn = false;
-            UpdateSlythTraits();
-
+            slythTraits.showBruiserVector = false;
 
         }
         

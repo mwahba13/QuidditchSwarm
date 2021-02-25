@@ -2,30 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2e35bed-f8cd-453a-b5d2-45a83ae45dbe" name="Default Changelist" comment="Gryffindor Crunkess factor is dope.">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.QuidditchForNubs/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QuidditchForNubs/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.QuidditchForNubs/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QuidditchForNubs/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.QuidditchForNubs/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QuidditchForNubs/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GryffindorTraits.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GryffindorTraits.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AgentSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AgentSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entities/Gryffindor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entities/Gryffindor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entities/Player_Base.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entities/Player_Base.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entities/Slytherin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entities/Slytherin.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entities/Snitch/Snitch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entities/Snitch/Snitch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/ScoreManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/ScoreManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/SpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/SpawnManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/GryffindorTraitsScriptable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/GryffindorTraitsScriptable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/CameraController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/DebugMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/DebugMenu.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SnitchSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SnitchSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/MainMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SlytherinTraits.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SlytherinTraits.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ArtifactDB" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ArtifactDB" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/EditorUserBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/EditorUserBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptMapper" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptMapper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ShaderCache/EditorEncounteredVariants" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ShaderCache/EditorEncounteredVariants" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/SourceAssetDB" beforeDir="false" afterPath="$PROJECT_DIR$/Library/SourceAssetDB" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/StateCache/Hierarchy/18d97c-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/Hierarchy/18d97c-mainStage.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/StateCache/SceneView/644606-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/SceneView/644606-mainStage.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe0.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/expandedItems" beforeDir="false" afterPath="$PROJECT_DIR$/Library/expandedItems" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe1.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe1.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe2.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe2.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,18 +63,18 @@
       <option value="$PROJECT_DIR$/Assets/MainMenu.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Utilities/SpeedExhaustReg.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/SlytherinTraitsScriptable.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Utilities/MainMenu.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/PlayerConstants.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Utilities/CameraController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Snitch/Snitch.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Managers/ScoreManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Managers/SpawnManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Slytherin.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Player_Base.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/GryffindorTraitsScriptable.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Gryffindor.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Utilities/DebugMenu.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Slytherin.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Utilities/MainMenu.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/ScriptableObjs/GryffindorTraitsScriptable.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Gryffindor.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1oFVIrbjITwIiPMQnksOEnL1VWi" />
@@ -153,7 +151,8 @@
       <workItem from="1613937179447" duration="11323000" />
       <workItem from="1613977724018" duration="815000" />
       <workItem from="1614127008785" duration="4593000" />
-      <workItem from="1614134955417" duration="9025000" />
+      <workItem from="1614134955417" duration="10310000" />
+      <workItem from="1614236627493" duration="1148000" />
     </task>
     <task id="LOCAL-00001" summary="Exhaustion WIP">
       <created>1613926781152</created>

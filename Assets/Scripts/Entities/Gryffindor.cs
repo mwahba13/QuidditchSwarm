@@ -14,6 +14,9 @@ public class Gryffindor : PlayerBase
 
     [SerializeField]
     private GameObject _nearestTeammate;
+
+    private float _crunkPower;
+    private float _buddyUpFactor;
     
     //INIT//
     public override void GenerateTraitValues()
@@ -24,7 +27,11 @@ public class Gryffindor : PlayerBase
         maxExhaust = GaussHouse.GenerateGaussianFloat(gryffTraits.maxExhaustion.x,gryffTraits.maxExhaustion.y);
         
         //gryffindor specific traits
+        _crunkPower = GaussHouse.GenerateGaussianFloat(gryffTraits.crunkness.x, gryffTraits.crunkness.y)/100;
+        _crunkPower = _crunkPower * gryffTraits.crunkPower;
 
+        _buddyUpFactor = GaussHouse.GenerateGaussianFloat(gryffTraits.buddySystem.x, gryffTraits.buddySystem.y);
+        _buddyUpFactor = gryffTraits.buddyPower * _buddyUpFactor;
     }
 
     
@@ -36,12 +43,14 @@ public class Gryffindor : PlayerBase
         newVec += SpeedExhaustReg.NormalizeSteeringForce(CalculateCrunkVector(),
             playerConstants.maxSteeringForce)*gryffTraits.crunknessWeighting;
         
-        newVec += SpeedExhaustReg.NormalizeSteeringForce((_nearestTeammate.gameObject.transform.position - transform.position),
+        //BUDDY SYSTEM
+        
+        newVec += SpeedExhaustReg.NormalizeSteeringForce((_nearestTeammate.gameObject.transform.position - transform.position)*_buddyUpFactor,
                       playerConstants.maxSteeringForce)
                   * gryffTraits.buddySystemWeighting;
         
         if(gryffTraits.showBuddyVector)
-            Debug.DrawRay(transform.position,_nearestTeammate.gameObject.transform.position,Color.cyan);
+            Debug.DrawLine(transform.position,_nearestTeammate.gameObject.transform.position,Color.cyan);
 
         return newVec;
     }
@@ -85,7 +94,8 @@ public class Gryffindor : PlayerBase
                     _nearestTeammate = neigh.gameObject;
                 
                 Vector3 nearestTeammateTrans = _nearestTeammate.transform.position;
-
+                
+                
                 if ((neighbourTrans - nearestTeammateTrans).magnitude <
                     (transform.position - nearestTeammateTrans).magnitude)
                 {
@@ -95,7 +105,7 @@ public class Gryffindor : PlayerBase
 
                   
 
-                //cohesion
+                
 
 
             }
@@ -147,7 +157,7 @@ public class Gryffindor : PlayerBase
         
         //intermittently toggle an up/right or down/left vector
         float sinVal = Mathf.Abs(Mathf.Sin(Time.time));
-        float crunkPower = gryffTraits.crunkPower * gryffTraits.crunknessWeighting;
+        float crunkPower = _crunkPower * gryffTraits.crunknessWeighting;
         
         if (sinVal < 0.25f || (sinVal >= 0.5f && sinVal < 0.75))
         {
@@ -174,14 +184,6 @@ public class Gryffindor : PlayerBase
     }
     
 
-    //calculates a float value based on crunk level
-    private float CalculateCrunkLevel()
-    {
-        float crunkLevel = GaussHouse.GenerateGaussianFloat(gryffTraits.crunkness.x, gryffTraits.crunkness.y);
-
-        return ((crunkLevel) / 100);
-
-    }
     
     
 }

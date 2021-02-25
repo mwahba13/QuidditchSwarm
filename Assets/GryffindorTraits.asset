@@ -18,8 +18,10 @@ MonoBehaviour:
   aggression: {x: 22, y: 3}
   maxExhaustion: {x: 65, y: 13}
   crunkness: {x: 100, y: 25}
-  crunkPower: 6
-  crunknessWeighting: 0
-  buddySystemWeighting: 0
-  showCrunknessVector: 0
-  showBuddyVector: 0
+  crunkPower: 5
+  crunknessWeighting: 1
+  buddySystem: {x: 100, y: 25}
+  buddyPower: 5
+  buddySystemWeighting: 1
+  showCrunknessVector: 1
+  showBuddyVector: 1

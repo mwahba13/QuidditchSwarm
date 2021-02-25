@@ -30,8 +30,12 @@ namespace ScriptableObjs
 
         [Tooltip("How hard that dankness supreme is hittin' each player")]
         public float crunknessWeighting;
-        
+
         [Tooltip("Gryffindors like to stick together")]
+        public Vector2 buddySystem;
+
+        public float buddyPower;
+        
         public float buddySystemWeighting;
         
         

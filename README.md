@@ -62,4 +62,6 @@ Press __ to access the in-game debug menu.
 All code is written by me (Michael Wahba) unless otherwise specified.
 Character models also created by me.
 
+Environment Assets - https://assetstore.unity.com/packages/3d/environments/landscapes/simple-low-poly-nature-pack-157552
+
 

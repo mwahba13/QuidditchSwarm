@@ -24,6 +24,6 @@ MonoBehaviour:
   speedTuningValue: 4
   maxSteeringForce: 10
   showNeighbourLineTraces: 0
-  showVectorTowardSnitch: 1
+  showVectorTowardSnitch: 0
   showSeperationVector: 0
   showAgentVelocity: 0

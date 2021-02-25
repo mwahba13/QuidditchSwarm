@@ -66,6 +66,9 @@ public class MainMenu : MonoBehaviour
 
         gryffCrunk_mean.text = gryffSerial.crunkness.x.ToString();
         gryffCrunk_std.text = gryffSerial.crunkness.y.ToString();
+
+        gryffTrait2_mean.text = gryffSerial.buddySystem.x.ToString();
+        gryffTrait2_std.text = gryffSerial.buddySystem.y.ToString();
         
         
         
@@ -110,6 +113,9 @@ public class MainMenu : MonoBehaviour
 
         gryffSerial.crunkness.x = float.Parse(gryffCrunk_mean.text);
         gryffSerial.crunkness.y = float.Parse(gryffCrunk_std.text);
+
+        gryffSerial.buddySystem.x = float.Parse(gryffTrait2_mean.text);
+        gryffSerial.buddySystem.y = float.Parse(gryffTrait2_std.text);
         
         
         //slytherin
