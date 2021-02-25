@@ -21,7 +21,7 @@ MonoBehaviour:
   snitchFollowWeight: 1
   environmentAvoidanceWeight: 1
   environmentAvoidanceRadius: 20
-  speedTuningValue: 4
+  speedTuningValue: 5
   maxSteeringForce: 10
   showNeighbourLineTraces: 0
   showVectorTowardSnitch: 0
