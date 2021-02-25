@@ -66,7 +66,7 @@ The stats of players on both teams are randomly determined based on the values e
 ![Bruiser Gif](GIFS/Bruiser1.gif)
 
 **Vortexing** - Slytherins will coordinate to vortex around the center of their local neighbourhood.
-![Vortex Gif](GIFS/Vortex,gif)
+![Vortex Gif](GIFS/Vortex.gif)
 
 ## Ingame Debug Menu
 The features of the ingame debug menu are available **ONLY IN THE UNITY EDITOR**.
