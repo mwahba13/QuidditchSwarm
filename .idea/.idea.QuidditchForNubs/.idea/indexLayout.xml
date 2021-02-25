@@ -20,7 +20,6 @@
       <Path>GIFS</Path>
       <Path>Library</Path>
       <Path>Logs</Path>
-      <Path>Temp</Path>
       <Path>img</Path>
       <Path>obj</Path>
     </explicitExcludes>
