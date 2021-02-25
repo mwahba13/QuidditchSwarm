@@ -20,6 +20,8 @@ namespace System
         //slytherin
         public InputField slythBruiseField;
         public Toggle slythBruiseVectorToggle;
+        public InputField slythVortexField;
+        public Toggle slythVortexToggle;
         
         //general agent
         public Toggle snitchVector;
@@ -49,9 +51,10 @@ namespace System
             
             //slyth
             slythBruiseField.text = slythTraits.bruiserWeighting.ToString();
-
-            slythBruiseVectorToggle.isOn = slythTraits.showBruiserVector;
+            slythVortexField.text = slythTraits.vortexWeighting.ToString();
             
+            slythBruiseVectorToggle.isOn = slythTraits.showBruiserVector;
+            slythVortexToggle.isOn = slythTraits.showVortexingVector;
             //agent traits
             
             snitchVector.isOn = agentTraits.showVectorTowardSnitch;
@@ -98,6 +101,8 @@ namespace System
 
             slythBruiseVectorToggle.isOn = false;
             slythTraits.showBruiserVector = false;
+            slythVortexToggle.isOn = false;
+            slythTraits.showVortexingVector = false;
 
         }
         
@@ -114,8 +119,10 @@ namespace System
         public void UpdateSlythTraits()
         {
             slythTraits.bruiserWeighting = float.Parse(slythBruiseField.text);
-
+            slythTraits.vortexWeighting = float.Parse(slythVortexField.text);
+            
             slythTraits.showBruiserVector = slythBruiseVectorToggle.isOn;
+            slythTraits.showVortexingVector = slythVortexToggle.isOn;
         }
         
         

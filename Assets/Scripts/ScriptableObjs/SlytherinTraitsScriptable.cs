@@ -29,9 +29,16 @@ namespace ScriptableObjs
         [Tooltip("Radius within which slytherins will chase down gryffindors")]
         public float bruiserBludgeonRadius;
 
+        public Vector2 vortexLevel;
+        public float vortexingPower;
+        public float vortexWeighting;
+        
+        
         [Header("Debug")] 
         
         public bool showBruiserVector;
+
+        public bool showVortexingVector;
 
     }
 }

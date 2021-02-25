@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5efa303d2754e32982a846c08891ebe, type: 3}
   m_Name: SlytherinTraits
   m_EditorClassIdentifier: 
-  NumberOfPlayers: 0
+  NumberOfPlayers: 5
   weight: {x: 85, y: 17}
   maxVelocity: {x: 16, y: 2}
   aggression: {x: 30, y: 7}
@@ -20,4 +20,8 @@ MonoBehaviour:
   bruiserLevel: {x: 100, y: 25}
   bruiserWeighting: 1
   bruiserBludgeonRadius: 10
+  vortexLevel: {x: 100, y: 25}
+  vortexingPower: 2
+  vortexWeighting: 1
   showBruiserVector: 0
+  showVortexingVector: 0

@@ -27,7 +27,7 @@ The player with the lower value becomes unconscious.
 
 ## Instructions
 1. Download or clone repository
-2. Open in Unity
+2. Open in Unity Editor 
 
 ## Controls
 W,A,S,D - Move Camera Forward, Backwards, Left, Right <br />
@@ -50,12 +50,14 @@ The stats of players on both teams are randomly determined based on the values e
 ### Gryffindor Traits
 **Crunkness** - Harry's been hitting the skooma pipe again. This trait makes the players all wibbly-wobbly like.
 
+**Buddy System** - Gryffindor's like to stick together...maybe a bit too much.
+
 ### Slyther Traits
 **Bruiser** - Slytherins are generally not nice. This trait causes players to try and ram the opposing players into submission ( ͡° ͜ʖ ͡°)
 
 
 ## Ingame Debug Menu
-Press __ to access the in-game debug menu.
+The features of the ingame debug menu are available **ONLY IN THE UNITY EDITOR**.
 
 
 # Credits

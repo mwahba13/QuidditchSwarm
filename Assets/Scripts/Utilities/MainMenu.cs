@@ -90,6 +90,9 @@ public class MainMenu : MonoBehaviour
         slythBruiser_mean.text = slythSerial.bruiserLevel.x.ToString();
         slythBruiser_std.text = slythSerial.bruiserLevel.y.ToString();
 
+        slythTrait2_mean.text = slythSerial.vortexLevel.x.ToString();
+        slythTrait2_std.text = slythSerial.vortexLevel.y.ToString();
+
     }
 
  
@@ -135,6 +138,9 @@ public class MainMenu : MonoBehaviour
 
         slythSerial.bruiserLevel.x = float.Parse(slythBruiser_mean.text);
         slythSerial.bruiserLevel.y = float.Parse(slythBruiser_std.text);
+
+        slythSerial.vortexLevel.x = float.Parse(slythTrait2_mean.text);
+        slythSerial.vortexLevel.y = float.Parse(slythTrait2_std.text);
 
     }
 }

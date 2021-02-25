@@ -50,10 +50,15 @@ public class Snitch : MonoBehaviour
         _timer += Time.deltaTime;
         if (_timer >= snitchSettings.directionTimer)
         {
-            Vector3 randDir = (Random.onUnitSphere - transform.position) * snitchSettings.snitchSpeed;
+            Vector3 randPoint = Random.onUnitSphere;
+            
+            Vector3 randDir = (randPoint - transform.position) * snitchSettings.snitchSpeed;
             accel += randDir;
             accel += SpeedExhaustReg.NormalizeSteeringForce(randDir, snitchSettings.maxSteeringForce);
             _timer = 0.0f;
+            
+            if(snitchSettings.showRandomVector)
+                Debug.DrawRay(transform.position,randPoint*5.0f,Color.yellow);
         }
         
         accel += SpeedExhaustReg.NormalizeSteeringForce(AvoidCollisions(), snitchSettings.maxSteeringForce)
@@ -67,6 +72,9 @@ public class Snitch : MonoBehaviour
             snitchSettings.maxVelocity);
 
         _rb.velocity = newVelocity;
+        
+        if(snitchSettings.showDirectionVector)
+            Debug.DrawRay(transform.position,newVelocity,Color.white);
 
         transform.forward = _rb.velocity.normalized;
 
@@ -99,6 +107,9 @@ public class Snitch : MonoBehaviour
                 snitchSettings.collisionRadiusDetection))
                 return Vector3.zero;
 
+        if(snitchSettings.showEnvironmentAvoidVector)
+            Debug.DrawLine(transform.position,transform.position - hitInfo.point,Color.red);
+        
         return transform.position - hitInfo.point;
 
         

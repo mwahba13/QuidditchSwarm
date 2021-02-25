@@ -1,16 +1,22 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using System.Numerics;
 using ScriptableObjs;
 using Random = UnityEngine.Random;
+using Vector3 = UnityEngine.Vector3;
 
 public class Slytherin : PlayerBase
 {
 
     private float _bruiserLevel;
+    private float _vortexLevel;
     
     //the current Gryffindor player this agent is trying to chase down
     private GameObject _currentTarget;
+    
+    //vortex center
+    private Vector3 _vortexMiddle;
     
     public SlytherinTraitsScriptable slythTraits;
     
@@ -24,16 +30,23 @@ public class Slytherin : PlayerBase
         
         //slytherin specific traits
         _bruiserLevel = CalculateBruiserLevel();
-        
-        
+
+        _vortexLevel = GaussHouse.GenerateGaussianFloat(slythTraits.vortexLevel.x, slythTraits.vortexLevel.y);
+        _vortexLevel /= 100;
+        _vortexLevel *= slythTraits.vortexingPower;
     }
     
     public override Vector3 TeamSpecificBehavior()
     {
         Vector3 newVec = Vector3.zero;
         
-        
+        //vortexing behavior
+        if(slythTraits.showVortexingVector)
+            Debug.DrawLine(transform.position,_vortexMiddle,Color.magenta);
 
+        newVec += SpeedExhaustReg.NormalizeSteeringForce(CalculateVortexingVelocity(), playerConstants.maxSteeringForce)
+                  * slythTraits.vortexWeighting;
+        
         return newVec;
     }
 
@@ -41,13 +54,16 @@ public class Slytherin : PlayerBase
     public override Vector3 TeamSpecificSeperation(Collider[] neighbours)
     {
         Vector3 newVec = Vector3.zero;
+        
+        //for calculating vortex position
+        int numTeammates = 1;
+        Vector3 centrePos = transform.position;
 
         foreach (Collider neigh in neighbours)
         {
             
             //avoid teammates, ground and environment
-            if (neigh.gameObject.CompareTag("Slytherin") || neigh.gameObject.CompareTag("Environment")
-                                                         || neigh.gameObject.CompareTag("Ground"))
+            if (neigh.gameObject.CompareTag("Environment")|| neigh.gameObject.CompareTag("Ground"))
             {
                 if ((neigh.transform.position - transform.position).magnitude <=
                     playerConstants.neighbourAvoidanceRadius)
@@ -58,6 +74,22 @@ public class Slytherin : PlayerBase
                 
             }
 
+            if (neigh.gameObject.CompareTag("Slytherin"))
+            {
+                //seperation
+                if ((neigh.transform.position - transform.position).magnitude <=
+                    playerConstants.neighbourAvoidanceRadius)
+                {
+                    newVec += SpeedExhaustReg.NormalizeSteeringForce((transform.position - neigh.gameObject.transform.position),
+                        playerConstants.maxSteeringForce) * playerConstants.neighbourAvoidanceWeight;
+                }
+                
+                //determine center of local vortex
+                numTeammates++;
+                centrePos += neigh.gameObject.transform.position;
+
+
+            }
             
             
             else if (neigh.gameObject.CompareTag("Gryffindor"))
@@ -85,6 +117,9 @@ public class Slytherin : PlayerBase
         
         if(playerConstants.showSeperationVector)
             Debug.DrawRay(transform.position,newVec,Color.green);
+
+        
+        _vortexMiddle = centrePos / numTeammates;
         
         return newVec;
     }
@@ -115,6 +150,18 @@ public class Slytherin : PlayerBase
 
         
         
+    }
+
+
+    //calculates a vector that is facing forward but propduces an angular velocity around the middle of the swarm
+    private Vector3 CalculateVortexingVelocity()
+    {
+        Vector3 _vecFromMiddle = transform.position - _vortexMiddle;
+        Vector3 output = Vector3.Cross(_vecFromMiddle.normalized, _rb.velocity.normalized)*_vortexLevel;
+        
+        if(slythTraits.showVortexingVector)
+            Debug.DrawRay(transform.position,output,Color.magenta);
+        return output;
     }
 
 
