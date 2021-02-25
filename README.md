@@ -7,6 +7,7 @@ Who am I kidding? You don't really care about that do you?
 This project is a simplified implementation of Quidditch in Unity using a multi-agent swarm paradigm to simulate the two teams.
 
 Each player has has a set number of forces propelling them through the world. One force leads them towards the snitch, another pushes them away from colliding with teammates. The forces can be visualized using the in-game debug menu. The goal of the game is to try and catch the snitch. Each time a member of a team catches a snitch, their team will score a point. If a team successively captures the snitch before the other team scores a point, then that team will gain a bonus point. The game ends when a team reaches a score of 100.
+![Big Swarm](GIFS/BigSwarm.gif)
 
 ## Mechanics
 ### Agent States
@@ -28,6 +29,10 @@ The player with the lower value becomes unconscious.
 ## Instructions
 1. Download or clone repository
 2. Open in Unity Editor 
+
+### Main Menu
+From the main menu you can change the values that will be used during the simulation. You can also change the number of players on each team.
+![Main Menu Image](img/MainMenu.png)
 
 ## Controls
 W,A,S,D - Move Camera Forward, Backwards, Left, Right <br />
@@ -54,11 +59,14 @@ The stats of players on both teams are randomly determined based on the values e
 **Buddy System** - Gryffindor's are like crips, they like to stick together.
 ![Buddy System Gif](GIFS/BuddySys.gif)
 
-**Buddy System** - Gryffindor's like to stick together...maybe a bit too much.
+
 
 ### Slyther Traits
 **Bruiser** - Slytherins are generally not nice. This trait causes players to try and ram the opposing players into submission ( ͡° ͜ʖ ͡°)
 ![Bruiser Gif](GIFS/Bruiser1.gif)
+
+**Vortexing** - Slytherins will coordinate to vortex around the center of their local neighbourhood.
+![Vortex Gif](GIFS/Vortex.gif)
 
 ## Ingame Debug Menu
 The features of the ingame debug menu are available **ONLY IN THE UNITY EDITOR**.
