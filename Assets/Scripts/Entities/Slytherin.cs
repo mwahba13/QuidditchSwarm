@@ -41,9 +41,10 @@ public class Slytherin : PlayerBase
         Vector3 newVec = Vector3.zero;
         
         //vortexing behavior
+        /*
         if(slythTraits.showVortexingVector)
             Debug.DrawLine(transform.position,_vortexMiddle,Color.magenta);
-
+*/
         newVec += SpeedExhaustReg.NormalizeSteeringForce(CalculateVortexingVelocity(), playerConstants.maxSteeringForce)
                   * slythTraits.vortexWeighting;
         
