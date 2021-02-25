@@ -49,12 +49,16 @@ The stats of players on both teams are randomly determined based on the values e
 
 ### Gryffindor Traits
 **Crunkness** - Harry's been hitting the skooma pipe again. This trait makes the players all wibbly-wobbly like.
+![Crunk Gif](GIFS/Crunkness.gif)
+
+**Buddy System** - Gryffindor's are like crips, they like to stick together.
+![Buddy System Gif](GIFS/BuddySys.gif)
 
 **Buddy System** - Gryffindor's like to stick together...maybe a bit too much.
 
 ### Slyther Traits
 **Bruiser** - Slytherins are generally not nice. This trait causes players to try and ram the opposing players into submission ( ͡° ͜ʖ ͡°)
-
+![Bruiser Gif](GIFS/Bruiser1.gif)
 
 ## Ingame Debug Menu
 The features of the ingame debug menu are available **ONLY IN THE UNITY EDITOR**.
@@ -62,7 +66,7 @@ The features of the ingame debug menu are available **ONLY IN THE UNITY EDITOR**
 
 # Credits
 All code is written by me (Michael Wahba) unless otherwise specified.
-Character models also created by me.
+Quidditch player models created by me.
 
 Environment Assets - https://assetstore.unity.com/packages/3d/environments/landscapes/simple-low-poly-nature-pack-157552
 
